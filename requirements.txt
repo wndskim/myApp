@@ -1,0 +1,11 @@
+pandas
+streamlit
+numpy
+datetime
+timedelta
+plotly
+ta
+requests
+matplotlib
+pykrx
+fredapi
