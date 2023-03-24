@@ -10,17 +10,18 @@ if chk00:
     티커s=stock.get_index_portfolio_deposit_file('1028')
     for 티커 in 티커s:
         종목s.append(stock.get_market_ticker_name(티커))
-    st.write(티커s)
-    st.write(종목s)
+    _df1=pd.DataFrame(list(zip(티커s, 종목s)), columns=['티커', '종목'])
 
-    _df=pd.DataFrame(list(zip(티커s, 종목s)), columns=['티커', '종목'])
+    st.dataframe(_df1)
 
-    st.dataframe(_df)
+    _df2=stock.get_market_ohlcv('20230324')
+    _df2=_df2[_df2.index.isin(티커s)]
 
-    # df=stock.get_market_ohlcv('20230324')
+    df=pd.merge(_df1, _df2, on='티커')
 
-    # df = df[df.index.isin(티커s)]
 
-    # st.write(len(df),'건')
-    # st.dataframe(df)
+
+
+    st.write(len(df),'건')
+    st.dataframe(df)
 
