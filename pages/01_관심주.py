@@ -13,10 +13,10 @@ if chk00:
     st.write(티커s)
     st.write(종목s)
 
-    _df=pd.concat([티커s, 종목s])
+    _df=pd.DataFrame(list(zip(티커s, 종목s)), columns=['티커', '종목'])
 
     st.dataframe(_df)
-    
+
     # df=stock.get_market_ohlcv('20230324')
 
     # df = df[df.index.isin(티커s)]
