@@ -18,6 +18,7 @@ if chk00:
     _df2=_df2[_df2.index.isin(티커s)]
 
     df=pd.merge(_df1, _df2, on='티커')
+    df.sort_values(by=등락률, ascending=False, inplace=True)
 
 
 
