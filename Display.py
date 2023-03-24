@@ -43,31 +43,56 @@ def 시장지표보기():
         subcol1, subcol2=st.beta_columns(2)
         with subcol1:
             날짜1=df_kospi.loc[len(df_kospi)-1, '날짜']
-            코스피지수1=df_kospi.loc[len(df_kospi)-1, '종가']
+            지수1=df_kospi.loc[len(df_kospi)-1, '종가']
             등락률1=df_kospi.loc[len(df_kospi)-1, '등락률']
             PER1=df_kospi.loc[len(df_kospi)-1, 'PER']
             PBR1=df_kospi.loc[len(df_kospi)-1, 'PBR']
 
             st.markdown(f'''###### :orange[날짜: {날짜1}]''')
-            st.markdown(f'''###### :orange[코스피지수: {코스피지수1}]''')
+            st.markdown(f'''###### :orange[코스피지수: {지수1}]''')
             st.markdown(f'''###### :orange[등락률: {등락률1}]''')
             st.markdown(f'''###### :orange[PER: {PER1}]''')
             st.markdown(f'''###### :orange[PBR: {PBR1}]''')
         with subcol2:
             날짜2=df_kospi.loc[len(df_kospi)-2, '날짜']
-            코스피지수2=df_kospi.loc[len(df_kospi)-2, '종가']
+            지수2=df_kospi.loc[len(df_kospi)-2, '종가']
             등락률2=df_kospi.loc[len(df_kospi)-2, '등락률']
             PER2=df_kospi.loc[len(df_kospi)-2, 'PER']
             PBR2=df_kospi.loc[len(df_kospi)-2, 'PBR']
 
             st.markdown(f'''###### :orange[날짜: {날짜2}]''')
-            st.markdown(f'''###### :orange[코스피지수: {코스피지수2}]''')
+            st.markdown(f'''###### :orange[코스피지수: {지수2}]''')
             st.markdown(f'''###### :orange[등락률: {등락률2}]''')
             st.markdown(f'''###### :orange[PER: {PER2}]''')
             st.markdown(f'''###### :orange[PBR: {PBR2}]''')
 
     with col2:
-        st.write(len(df_kosdaq))
+        st.text('...코스닥...')
+        subcol1, subcol2=st.beta_columns(2)
+        with subcol1:
+            날짜1=df_kosdaq.loc[len(df_kosdaq)-1, '날짜']
+            지수1=df_kosdaq.loc[len(df_kosdaq)-1, '종가']
+            등락률1=df_kosdaq.loc[len(df_kosdaq)-1, '등락률']
+            PER1=df_kosdaq.loc[len(df_kosdaq)-1, 'PER']
+            PBR1=df_kosdaq.loc[len(df_kosdaq)-1, 'PBR']
+
+            st.markdown(f'''###### :orange[날짜: {날짜1}]''')
+            st.markdown(f'''###### :orange[코스피지수: {지수1}]''')
+            st.markdown(f'''###### :orange[등락률: {등락률1}]''')
+            st.markdown(f'''###### :orange[PER: {PER1}]''')
+            st.markdown(f'''###### :orange[PBR: {PBR1}]''')
+        with subcol2:
+            날짜2=df_kosdaq.loc[len(df_kosdaq)-2, '날짜']
+            코스피지수2=df_kosdaq.loc[len(df_kosdaq)-2, '종가']
+            등락률2=df_kosdaq.loc[len(df_kosdaq)-2, '등락률']
+            PER2=df_kosdaq.loc[len(df_kosdaq)-2, 'PER']
+            PBR2=df_kosdaq.loc[len(df_kosdaq)-2, 'PBR']
+
+            st.markdown(f'''###### :orange[날짜: {날짜2}]''')
+            st.markdown(f'''###### :orange[코스피지수: {지수2}]''')
+            st.markdown(f'''###### :orange[등락률: {등락률2}]''')
+            st.markdown(f'''###### :orange[PER: {PER2}]''')
+            st.markdown(f'''###### :orange[PBR: {PBR2}]''')
 
 
     return
