@@ -8,3 +8,7 @@ if chk00:
     티커s=stock.get_index_portfolio_deposit_file('1028')
     st.write(티커s)
 
+    df=stock.get_market_ohlcv('20230324')
+
+    st.dataframe(df)
+
