@@ -39,6 +39,7 @@ def 시장지표보기():
 
     col1,col2=st.columns(2)
     with col1:
+        st.text('...코스피...')
         subcol1, subcol2=st.beta_columns(2)
         with subcol1:
             날짜1=df_kospi.loc[len(df_kospi)-1, '날짜']
