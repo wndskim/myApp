@@ -73,6 +73,8 @@ def 시장지표보기():
 
     with col2:
         st.markdown(f'''###### :blue[... 코스닥 ...]''')
+        st.markdown('-----')
+        
         subcol1, subcol2=st.beta_columns(2)
         with subcol1:
             날짜1=df_kosdaq.loc[len(df_kosdaq)-1, '날짜']
