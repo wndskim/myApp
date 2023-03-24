@@ -42,7 +42,7 @@ def 시장지표보기():
 
     col1,col2=st.columns(2)
     with col1:
-        st.markdown(f'''###### :orange[... 코스피 ...]''')
+        st.markdown(f'''##### :orange[... 코스피 ...]''')
         st.markdown('-----')
 
         subcol1, subcol2=st.beta_columns(2)
@@ -72,9 +72,9 @@ def 시장지표보기():
             st.markdown(f'''###### :orange[PBR: {PBR2}]''')
 
     with col2:
-        st.markdown(f'''###### :blue[... 코스닥 ...]''')
+        st.markdown(f'''##### :blue[... 코스닥 ...]''')
         st.markdown('-----')
-        
+
         subcol1, subcol2=st.beta_columns(2)
         with subcol1:
             날짜1=df_kosdaq.loc[len(df_kosdaq)-1, '날짜']
