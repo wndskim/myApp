@@ -10,7 +10,7 @@ if chk00:
 
     df=stock.get_market_ohlcv('20230324')
 
-    df = df[df['티커'].isin(티커s)]
+    df = df[df.index.isin(티커s)]
 
     st.write(len(df),'건')
     st.dataframe(df)
