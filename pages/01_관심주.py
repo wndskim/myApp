@@ -4,13 +4,15 @@ import pandas as pd
 from datetime import date
 
 st.write('관심주')
-조회일=date.today()
+
+조회일=st.date_input('조회일', date.today())
+# 조회일=date.today()
 조회일=str(조회일).replace('-','')
 
 chk00=st.sidebar.checkbox('코스피200 보기',value=False)
 if chk00:
     st.text('코스피200 조회일 : '+조회일)
-    
+
     종목s=[]
     티커s=stock.get_index_portfolio_deposit_file('1028')
     for 티커 in 티커s:
