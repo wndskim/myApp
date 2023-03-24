@@ -39,5 +39,8 @@ def 시장지표보기():
     with col1: st.dataframe(df_kospi)
     with col2: st.dataframe(df_kosdaq)
 
+    col1,col2=st.columns(2)
+    with col1:
+        st.write(df_kospi['날짜'][-2].values[0])
 
     return
