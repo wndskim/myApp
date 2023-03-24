@@ -3,7 +3,7 @@ import streamlit as st
 
 def main():
 
-    st.header('여기서 시작')
+    st.header('My Stock Inquiry System')
 
     return
 
