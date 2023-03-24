@@ -12,7 +12,7 @@ def main():
     chk02=st.sidebar.checkbox('주요 뉴스 보기')
     if chk00: st.text('시장 지표 보기')
     if chk01: Display.연방은행주요지표보기()
-    if chk02: st.text('주요 뉴스 보기')
+    if chk02: Display.주요뉴스보기()
 
     return
 
