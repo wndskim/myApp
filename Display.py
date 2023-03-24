@@ -30,8 +30,6 @@ def 시장지표보기():
     시작일=str(Share.get_date(조회일, 20)).replace('-','')  # 조회일로부터 20일전 부터 데이타 가져오기
     종료일=str(조회일).replace('-','')
 
-    st.write(시작일,종료일)
-
     df_kospi=GetData.Index_Fundamental_조회(시작일,종료일,'코스피')
     df_kosdaq=GetData.Index_Fundamental_조회(시작일,종료일,'코스닥')
 
@@ -43,9 +41,17 @@ def 시장지표보기():
     with col1:
         st.write(len(df_kospi))
         날짜1=df_kospi.loc[len(df_kospi)-1, '날짜']
-        날짜2=df_kospi.loc[len(df_kospi)-2, '날짜']
-        st.write('날짜:', 날짜1)
-        st.write('날짜:', 날짜2)
+        코스피지수1=df_kospi.loc[len(df_kospi)-1, '종가']
+        등락률1=df_kospi.loc[len(df_kospi)-2, '등락률']
+        PER1=df_kospi.loc[len(df_kospi)-2, 'PER']
+        PBR1=df_kospi.loc[len(df_kospi)-2, 'PBR']
+
+        st.markdown(f'''###### :orange[날짜: {날짜1}]''')
+        st.markdown(f'''###### :orange[코스피지수: {코스피지수1}]''')
+        st.markdown(f'''###### :orange[등락률: {등락률1}]''')
+        st.markdown(f'''###### :orange[PER: {PER1}]''')
+        st.markdown(f'''###### :orange[PBR: {PBR1}]''')
+
     with col2:
         st.write(len(df_kosdaq))
 
