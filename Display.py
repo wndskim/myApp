@@ -20,3 +20,8 @@ def 주요뉴스보기():
     st.write('[2023-03-07(월): 700조 규모 "네옴시티"도 결국은 "물"…수처리 건설사들 노났다](https://biz.newdaily.co.kr/site/data/html/2023/03/06/2023030600073.html)')
 
     return
+
+def 시장지표보기():
+
+
+    return
