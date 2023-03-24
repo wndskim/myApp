@@ -33,9 +33,9 @@ def 시장지표보기():
     df_kospi=GetData.Index_Fundamental_조회(시작일,종료일,'코스피')
     df_kosdaq=GetData.Index_Fundamental_조회(시작일,종료일,'코스닥')
 
-    col1,col2=st.columns(2)
-    with col1: st.dataframe(df_kospi)
-    with col2: st.dataframe(df_kosdaq)
+    # col1,col2=st.columns(2)
+    # with col1: st.dataframe(df_kospi)
+    # with col2: st.dataframe(df_kosdaq)
 
     col1,col2=st.columns(2)
     with col1:
@@ -76,11 +76,11 @@ def 시장지표보기():
             PER1=df_kosdaq.loc[len(df_kosdaq)-1, 'PER']
             PBR1=df_kosdaq.loc[len(df_kosdaq)-1, 'PBR']
 
-            st.markdown(f'''###### :orange[날짜: {날짜1}]''')
-            st.markdown(f'''###### :orange[코스피지수: {지수1}]''')
-            st.markdown(f'''###### :orange[등락률: {등락률1}]''')
-            st.markdown(f'''###### :orange[PER: {PER1}]''')
-            st.markdown(f'''###### :orange[PBR: {PBR1}]''')
+            st.markdown(f'''###### :blue[날짜: {날짜1}]''')
+            st.markdown(f'''###### :blue[코스피지수: {지수1}]''')
+            st.markdown(f'''###### :blue[등락률: {등락률1}]''')
+            st.markdown(f'''###### :blue[PER: {PER1}]''')
+            st.markdown(f'''###### :blue[PBR: {PBR1}]''')
         with subcol2:
             날짜2=df_kosdaq.loc[len(df_kosdaq)-2, '날짜']
             코스피지수2=df_kosdaq.loc[len(df_kosdaq)-2, '종가']
@@ -88,11 +88,11 @@ def 시장지표보기():
             PER2=df_kosdaq.loc[len(df_kosdaq)-2, 'PER']
             PBR2=df_kosdaq.loc[len(df_kosdaq)-2, 'PBR']
 
-            st.markdown(f'''###### :orange[날짜: {날짜2}]''')
-            st.markdown(f'''###### :orange[코스피지수: {지수2}]''')
-            st.markdown(f'''###### :orange[등락률: {등락률2}]''')
-            st.markdown(f'''###### :orange[PER: {PER2}]''')
-            st.markdown(f'''###### :orange[PBR: {PBR2}]''')
+            st.markdown(f'''###### :blue[날짜: {날짜2}]''')
+            st.markdown(f'''###### :blue[코스피지수: {지수2}]''')
+            st.markdown(f'''###### :blue[등락률: {등락률2}]''')
+            st.markdown(f'''###### :blue[PER: {PER2}]''')
+            st.markdown(f'''###### :blue[PBR: {PBR2}]''')
 
 
     return
