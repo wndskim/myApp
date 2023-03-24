@@ -41,6 +41,6 @@ def 시장지표보기():
 
     col1,col2=st.columns(2)
     with col1:
-        st.write(df_kospi['날짜'][-2].values[0])
+        st.write(df_kospi['날짜'].head(1).values[0])
 
     return
