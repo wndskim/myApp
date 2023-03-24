@@ -3,7 +3,7 @@ import streamlit as st
 
 def main():
 
-    st.header('My Stock Inquiry System')
+    st.header('My Stock Inquiry System(MSIS)')
 
     return
 
