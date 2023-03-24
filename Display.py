@@ -1,7 +1,7 @@
 import streamlit as st
 from datetime import date
 
-import Share
+import Share, GetData
 
 
 def 연방은행주요지표보기():
@@ -26,15 +26,18 @@ def 주요뉴스보기():
 
 def 시장지표보기():
 
-
     조회일=date.today()
-
-    st.write(조회일)
-
     시작일=str(Share.get_date(조회일, 20)).replace('-','')  # 조회일로부터 20일전 부터 데이타 가져오기
     종료일=str(조회일).replace('-','')
 
     st.write(시작일,종료일)
+
+    df_kospi=GetData.Index_Fundamental_조회(시작일,종료일,'코스피')
+    df_kosdaq=GetData.Index_Fundamental_조회(시작일,종료일,'코스닥')
+
+    col1,col2=st.columns(2)
+    with col1: st.dataframe(df_kospi)
+    with col2: st.dataframe(df_kosdaq)
 
 
     return
