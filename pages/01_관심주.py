@@ -24,6 +24,7 @@ if chk00:
         for 티커 in 티커s:
             종목s.append(stock.get_market_ticker_name(티커))
         _df1=pd.DataFrame(list(zip(티커s, 종목s)), columns=['티커', '종목'])
+        _dict=dict(zip(종목s,티커s))
         _df2=GetData.load_from_pykrx_해당일전체(조회일)
         _df2=_df2[_df2.index.isin(티커s)]
 
@@ -39,7 +40,6 @@ if chk00:
         종목s=df.종목.tolist()
 
 
-    _dict=dict(zip(종목s,티커s))
     종목=container.selectbox('선택', 종목s)
     _티커=_dict[종목]
 
