@@ -15,7 +15,7 @@ def load_from_pykrx_개별종목(시작일,종료일,티커):
     df.dropna(inplace=True)
     # df.reset_index(inplace=True)
     # df['날짜']=df['날짜'].dt.strftime('%Y-%m-%d')
-    df.index=df.index.dt.strftime('%Y-%m-%d')
+    df.index=df.index.strftime('%Y-%m-%d')
     df['변동액']=df['변동액'].astype(int)
 
     return df
