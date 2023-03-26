@@ -1,9 +1,9 @@
-# import streamlit as st
+import streamlit as st
+import plotly.graph_objs as go
 # from pykrx import stock
 # import pandas as pd
 # from datetime import date, datetime
 # import GetData, Share
-import plotly.graph_objs as go
 
 def 차트_일봉(df,종목):
     fig = go.Figure()
