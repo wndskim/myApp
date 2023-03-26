@@ -46,7 +46,7 @@ if chk00:
 
     df_개별종목=GetData.load_from_pykrx_개별종목(시작일,종료일,_티커)
 
-    # st.dataframe(df_개별종목.reset_index(inplace=True))
+    st.dataframe(df_개별종목)
 
     df_w=df_개별종목.resample('W').agg({'시가':'first','고가':'max','저가':'min','종가':'last','거래량':'sum','거래대금':'sum'})
     df_m=df_개별종목.resample('M',closed='right',label='right').agg({'시가':'first','고가':'max','저가':'min','종가':'last','거래량':'sum','거래대금':'sum'})
