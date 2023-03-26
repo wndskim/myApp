@@ -35,7 +35,8 @@ if chk00:
 
 
         # _dict=_df1.to_dict()
-        # container.dataframe(_dict)
+        _dict=dict(zip(티커s,종목s))
+        container.dataframe(_dict)
 
         st.dataframe(_df1)
 
