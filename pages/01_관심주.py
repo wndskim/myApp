@@ -35,7 +35,7 @@ if chk00:
 
 
         # _dict=_df1.to_dict()
-        _dict=dict(zip(티커s,종목s))
+        _dict=dict(zip(종목s,티커s))
         container.dataframe(_dict)
 
         st.dataframe(_df1)
@@ -43,4 +43,4 @@ if chk00:
         종목=container.selectbox('선택', 종목s)
         container.write(종목)
         container.write(_df1[_df1['종목']==종목]['티커'].values[0])
-        container.write(_df1.loc[_df1['종목']==종목]['티커'])
+        container.write(_dict(종목))
