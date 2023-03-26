@@ -42,5 +42,5 @@ if chk00:
     container.write(종목)
     container.write(_df1[_df1['종목']==종목]['티커'].values[0])
 
-    
+    st.write(_dict)
     st.write(_dict(종목))
