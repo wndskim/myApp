@@ -24,9 +24,6 @@ if chk00:
             df=pd.merge(_df1, _df2, on='티커')
             df.sort_values(by='등락률', ascending=False, inplace=True)
 
-
-
-
             st.write('코스피200',len(df),'건')
             st.dataframe(df)
 
