@@ -49,7 +49,7 @@ if chk00:
     df_개별종목=GetData.set_indicator(df_개별종목)
 
     st.write(종목, _dict[종목],_티커)
-    st.dataframe(df_개별종목)
+    # st.dataframe(df_개별종목)
 
 
     fig = go.Figure()
@@ -62,20 +62,13 @@ if chk00:
     fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma240'], name='sma240'))
     fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma480'], name='sma480'))
 
-    fig.update_layout(title=종목+' stock price with SMA5, SMA10, SMA20, SMA60, SMA120, SMA240 and SMA480',
+    fig.update_layout(title=종목+' 차트',
                     xaxis_title='년월',
                     yaxis_title='가격',
                     width=1500,
                     height=700,                      
                     # xaxis_rangeslider_visible = False
                     )
-
-            # fig.update_layout(title=종목+title,
-            #             xaxis_title='년월',
-            #             yaxis_title='가격',
-            #             width=1000,
-            #             height=400,
-            #             xaxis_rangeslider_visible = False)
 
     st.plotly_chart(fig)
     # fig.show()
