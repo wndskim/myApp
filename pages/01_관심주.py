@@ -5,7 +5,7 @@ from datetime import date
 
 st.write('관심주')
 
-st.session_status['status']=''
+st.session_state['status']=''
 
 
 
