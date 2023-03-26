@@ -33,7 +33,19 @@ if chk00:
         종목s=df.종목.tolist()
 
 
-        _dict=_df1.to_dict()
+        _dict=_df1.to_dict(orient='index')
         종목=container.selectbox('선택', 종목s)
-        container.text(종목,_dict(종목))
+        # container.text(종목,_dict(종목))
         container.dataframe(_dict)
+
+
+import pandas as pd
+
+# create a sample dataframe
+df = pd.DataFrame({'A': [1, 2], 'B': [3, 4]})
+
+# convert the dataframe to a dictionary
+my_dict = df.to_dict()
+
+# print the resulting dictionary
+print(my_dict)
