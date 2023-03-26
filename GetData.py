@@ -1,10 +1,9 @@
+import streamlit as st
 from pykrx import stock
 
-def load_from_prx():
-
-
-
-    return
+@st.cache
+def load_from_prx_해당일전체(조회일):
+    return stock.get_market_ohlcv(조회일)
 
 def Index_Fundamental_조회(시작일, 종료일, 마켓):
     if 마켓=='코스피': market='1001'
