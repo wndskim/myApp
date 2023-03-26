@@ -7,7 +7,7 @@ import GetData, Share
 st.write('관심주')
 
 
-종료일=datetime.date.today()
+종료일=date.today()
 시작일=Share.get_date(종료일,260*3) #3년전 날짜
 종료일=종료일.strftime('%Y%m%d')
 
