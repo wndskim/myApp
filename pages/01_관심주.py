@@ -54,8 +54,12 @@ if chk00:
 
 
     df_개별종목=GetData.set_indicator(df_개별종목)
+    df_개별종목.reset_index(inplace=True)
     df_w=GetData.set_indicator(df_w)
+    df_w.reset_index(inplace=True)
     df_m=GetData.set_indicator(df_m)
+    df_m.reset_index(inplace=True)
+
     Chart.차트_일봉(df_개별종목,종목)
     Chart.차트_일봉(df_w,종목)
     Chart.차트_일봉(df_m,종목)
