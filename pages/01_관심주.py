@@ -42,3 +42,4 @@ if chk00:
         종목=container.selectbox('선택', 종목s)
         container.write(종목)
         container.write(_df1[_df1['종목']==종목]['티커'].values[0])
+        container.write(_df1.loc[_df1['종목']==종목]['티커'])
