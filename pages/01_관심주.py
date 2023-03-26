@@ -5,10 +5,10 @@ from datetime import date
 
 st.write('관심주')
 
-status=st.session_state()
+st.session_state['status']='first'
 
 
-st.write(status)
+st.write(st.session_state)
 
 
 
