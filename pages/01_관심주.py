@@ -13,7 +13,7 @@ st.write('관심주')
 
 chk00=st.sidebar.checkbox('코스피200 보기',value=False)
 if chk00:
-    col1,col2=st.columns([1,5])
+    col1,col2,col3=st.columns([1,5,1])
     with col1:
         조회일=st.date_input('조회일', date.today())
         조회일=str(조회일).replace('-','')
@@ -33,15 +33,16 @@ if chk00:
 
         df.reset_index(inplace=True)
         df.drop('index', axis=1, inplace=True)
+        종목s=df.종목.tolist()
 
         st.write('코스피200',len(df),'건')
         st.dataframe(df)
 
-        종목s=df.종목.tolist()
+        종목=container.selectbox('선택', 종목s)
+        _티커=_dict[종목]
 
-
-    종목=container.selectbox('선택', 종목s)
-    _티커=_dict[종목]
+    with col3:
+        Share.챰조링크보기(_티커,종목)
 
     # 개별종목 일/주/월 차트 그리기
     df_개별종목=GetData.load_from_pykrx_개별종목(시작일,종료일,_티커)
