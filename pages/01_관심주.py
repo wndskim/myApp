@@ -30,6 +30,8 @@ if chk00:
         st.write('코스피200',len(df),'건')
         st.dataframe(df)
 
+        종목s=df.종목.tolist()
+
 
         종목=container.selectbox('선택', 종목s)
         container.text(종목)
