@@ -41,7 +41,7 @@ if chk00:
         종목=container.selectbox('선택', 종목s)
         _티커=_dict[종목]
     with col3:
-        Share.챰조링크보기(_티커,종목)
+        Share.참조링크보기(_티커,종목)
 
     # 개별종목 일/주/월 차트 그리기
     df_개별종목=GetData.load_from_pykrx_개별종목(시작일,종료일,_티커)
