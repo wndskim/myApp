@@ -20,7 +20,6 @@ if chk00:
             종목s.append(stock.get_market_ticker_name(티커))
         _df1=pd.DataFrame(list(zip(티커s, 종목s)), columns=['티커', '종목'])
         _df2=GetData.load_from_prx_해당일전체(조회일)
-        # _df2=stock.get_market_ohlcv(조회일)
         _df2=_df2[_df2.index.isin(티커s)]
 
         df=pd.merge(_df1, _df2, on='티커')
@@ -37,6 +36,8 @@ if chk00:
 
         # _dict=_df1.to_dict()
         # container.dataframe(_dict)
+
+        st.dataframe(_df1)
 
         종목=container.selectbox('선택', 종목s)
         container.write(종목, _df1[_df1['종목']==종목]['티커'].values[0])
