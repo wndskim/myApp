@@ -65,9 +65,9 @@ if chk00:
     fig.update_layout(title=종목+' stock price with SMA5, SMA10, SMA20, SMA60, SMA120, SMA240 and SMA480',
                     xaxis_title='년월',
                     yaxis_title='가격',
-                    width=1000,
-                    height=400,                      
-                    xaxis_rangeslider_visible = False
+                    width=1500,
+                    height=700,                      
+                    # xaxis_rangeslider_visible = False
                     )
 
             # fig.update_layout(title=종목+title,
