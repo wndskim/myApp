@@ -45,6 +45,7 @@ if chk00:
 
     df_개별종목=GetData.load_from_pykrx_개별종목(시작일,종료일,_티커,)
 
+    st.write(_dict)
     st.write(종목, _dict[종목],_티커)
     st.dataframe(df_개별종목)
 
