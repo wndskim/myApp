@@ -44,7 +44,7 @@ if chk00:
     _티커=_dict[종목]
 
 
-    df_개별종목=GetData.load_from_pykrx_개별종목(시작일,종료일,_티커,)
+    df_개별종목=GetData.load_from_pykrx_개별종목(시작일,종료일,_티커)
 
     st.dataframe(df_개별종목.reset_index(inplace=True))
 
