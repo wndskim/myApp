@@ -34,13 +34,7 @@ if chk00:
         종목s=df.종목.tolist()
 
 
-    # _dict=_df1.to_dict()
     _dict=dict(zip(종목s,티커s))
-    container.dataframe(_dict)
-
     종목=container.selectbox('선택', 종목s)
     container.write(종목)
-    container.write(_df1[_df1['종목']==종목]['티커'].values[0])
-
-    st.write(_dict)
     st.write(_dict[종목])
