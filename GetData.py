@@ -1,7 +1,6 @@
 import streamlit as st
 from pykrx import stock
 import ta
-import talib
 
 @st.cache
 def load_from_pykrx_해당일전체(조회일):
