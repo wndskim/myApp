@@ -35,4 +35,5 @@ if chk00:
 
         종목=container.selectbox('선택', 종목s)
         container.text(종목)
-        container.dataframe(_df1.to_dict())
+        _dict=_df1.to_dict()
+        container.dataframe(_dict)
