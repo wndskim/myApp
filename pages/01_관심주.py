@@ -12,6 +12,7 @@ if chk00:
         조회일=st.date_input('조회일', date.today())
         # 조회일=date.today()
         조회일=str(조회일).replace('-','')
+        container=st.container()
     with col2:
             종목s=[]
             티커s=stock.get_index_portfolio_deposit_file('1028')
@@ -27,3 +28,5 @@ if chk00:
             st.write('코스피200',len(df),'건')
             st.dataframe(df)
 
+    종목=container.selectbox('선택', 종목s)
+    container.text(종목)
