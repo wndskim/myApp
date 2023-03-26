@@ -37,7 +37,7 @@ if chk00:
         # container.dataframe(_dict)
 
         종목=container.selectbox('선택', 종목s)
-        container.text(종목, _df1[_df1['종목']==종목]['티커'])
+        container.write(종목, _df1[_df1['종목']==종목]['티커'].values[0])
 
 
 import pandas as pd
