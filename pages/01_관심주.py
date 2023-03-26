@@ -45,29 +45,17 @@ if chk00:
 
 
     df_개별종목=GetData.load_from_pykrx_개별종목(시작일,종료일,_티커,)
-    df_개별종목=GetData.set_indicator(df_개별종목)
-    Chart.차트_일봉(df_개별종목,종목)
 
-    # fig = go.Figure()
-    # fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['종가'], name='종가'))
-    # fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma5'], name='sma5'))
-    # fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma10'], name='sma10'))
-    # fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma20'], name='sma20'))
-    # fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma60'], name='sma60'))
-    # fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma120'], name='sma120'))
-    # fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma240'], name='sma240'))
-    # fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma480'], name='sma480'))
+    df_w=df_개별종목.resample('W').agg({'시가':'first','고가':'max','저가':'min','종가':'last','거래량':'sum','거래대금':'sum'})
+    df_m=df_개별종목.resample('M',closed='right',label='right').agg({'시가':'first','고가':'max','저가':'min','종가':'last','거래량':'sum','거래대금':'sum'})
 
-    # fig.update_layout(title=종목+' 차트(일)',
-    #                 xaxis_title='년월',
-    #                 yaxis_title='가격',
-    #                 width=1500,
-    #                 height=700,                      
-    #                 # xaxis_rangeslider_visible = False
-    #                 )
+    st.dataframe(df_w)
+    st.dataframe(df_m)
 
-    # st.plotly_chart(fig)
-    # # fig.show()
+
+    # df_개별종목=GetData.set_indicator(df_개별종목)
+    # Chart.차트_일봉(df_개별종목,종목)
+
 
 
 
