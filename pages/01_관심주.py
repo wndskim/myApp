@@ -35,5 +35,5 @@ if chk00:
 
             st.session_statestatus='코스피200'
 
-        종목=container.selectbox('선택', 종목s)
-        container.text(종목)
+            종목=container.selectbox('선택', 종목s)
+            container.text(종목)
