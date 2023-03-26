@@ -40,7 +40,6 @@ if chk00:
 
         종목=container.selectbox('선택', 종목s)
         _티커=_dict[종목]
-
     with col3:
         Share.챰조링크보기(_티커,종목)
 
