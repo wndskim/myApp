@@ -5,9 +5,8 @@ from datetime import date
 
 st.write('관심주')
 
-status = st.session_status()
+st.session_status.status=''
 
-st.write(status)
 
 
 chk00=st.sidebar.checkbox('코스피200 보기',value=False)
@@ -19,7 +18,7 @@ if chk00:
         조회일=str(조회일).replace('-','')
         container=st.container()
     with col2:
-            if status=='':
+            if st.session_state.status=='':
                 종목s=[]
                 티커s=stock.get_index_portfolio_deposit_file('1028')
                 for 티커 in 티커s:
@@ -34,7 +33,7 @@ if chk00:
                 st.write('코스피200',len(df),'건')
                 st.dataframe(df)
 
-                status='코스피200'
+                st.session_state.status='코스피200'
 
     종목=container.selectbox('선택', 종목s)
     container.text(종목)
