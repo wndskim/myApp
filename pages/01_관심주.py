@@ -51,12 +51,16 @@ if chk00:
     df_w=df_개별종목.resample('W').agg({'시가':'first','고가':'max','저가':'min','종가':'last','거래량':'sum','거래대금':'sum'})
     df_m=df_개별종목.resample('M',closed='right',label='right').agg({'시가':'first','고가':'max','저가':'min','종가':'last','거래량':'sum','거래대금':'sum'})
 
+
+
+    df_개별종목=GetData.set_indicator(df_개별종목)
+    df_w=GetData.set_indicator(df_w)
+    df_m=GetData.set_indicator(df_m)
+    # Chart.차트_일봉(df_개별종목,종목)
+
+
     st.dataframe(df_w)
     st.dataframe(df_m)
-
-
-    # df_개별종목=GetData.set_indicator(df_개별종목)
-    # Chart.차트_일봉(df_개별종목,종목)
 
 
 
