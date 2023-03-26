@@ -5,7 +5,6 @@ datetime
 timedelta
 plotly
 ta
-talib
 requests
 matplotlib
 pykrx
