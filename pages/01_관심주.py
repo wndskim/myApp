@@ -18,7 +18,7 @@ if chk00:
         조회일=str(조회일).replace('-','')
         container=st.container()
     with col2:
-        if st.session_state.status=='':
+        if st.session_state.status=='first':
             종목s=[]
             티커s=stock.get_index_portfolio_deposit_file('1028')
             for 티커 in 티커s:
