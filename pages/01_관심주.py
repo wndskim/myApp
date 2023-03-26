@@ -43,4 +43,4 @@ if chk00:
     container.write(_df1[_df1['종목']==종목]['티커'].values[0])
 
     
-    container.write(_dict(종목))
+    st.write(_dict(종목))
