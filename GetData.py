@@ -49,6 +49,7 @@ def set_indicator(data):
     data['sma120']=ta.trend.sma_indicator(data.종가, window=120)
     data['sma150']=ta.trend.sma_indicator(data.종가, window=150)
     data['sma240']=ta.trend.sma_indicator(data.종가, window=240)
+    data['sma480']=ta.trend.sma_indicator(data.종가, window=480)
     data['거래량20평균']=ta.trend.sma_indicator(data.거래량, window=20)
     data['거래대금20평균']=ta.trend.sma_indicator(data.거래대금, window=20)
 
