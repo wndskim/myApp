@@ -60,22 +60,22 @@ def set_indicator(data):
     data['diff20120']=data['sma20']/data['sma120']*100
     data['diff60120']=data['sma60']/data['sma120']*100
     
-    upperband, middleband, lowerband = talib.BBANDS(data.종가, timeperiod=5, nbdevup=2, nbdevdn=2, matype=0)
-    data['bb_upper']=upperband
-    data['bb_middle']=middleband
-    data['bb_lower']=lowerband
-    # Momentum Indocatio Functions
-    macd, macdsignal, macdhist = talib.MACD(data.종가, fastperiod=12, slowperiod=26, signalperiod=9)
-    data['macd']=macd
-    data['macdsignal']=macdsignal
-    data['macdhist']=macdhist
-    data['rsi']=talib.RSI(data.종가, timeperiod=10)
-    slowk, slowd = talib.STOCH(data.고가, data.저가, data.종가, fastk_period=5, slowk_period=3, slowk_matype=0, slowd_period=3, slowd_matype=0)
-    data['slowk']=slowk
-    data['slowd']=slowd
-    # Volatility Indicator Functions
-    data['atr']=talib.ATR(data.고가, data.저가, data.종가, timeperiod=14)
-    # # Volume indicator Functions
-    # data['adosc']=talib.ADOSC(data.고가, data.저가, data.종가, data.Volume, fastperiod=3, s저가period=10)
+    # upperband, middleband, lowerband = talib.BBANDS(data.종가, timeperiod=5, nbdevup=2, nbdevdn=2, matype=0)
+    # data['bb_upper']=upperband
+    # data['bb_middle']=middleband
+    # data['bb_lower']=lowerband
+    # # Momentum Indocatio Functions
+    # macd, macdsignal, macdhist = talib.MACD(data.종가, fastperiod=12, slowperiod=26, signalperiod=9)
+    # data['macd']=macd
+    # data['macdsignal']=macdsignal
+    # data['macdhist']=macdhist
+    # data['rsi']=talib.RSI(data.종가, timeperiod=10)
+    # slowk, slowd = talib.STOCH(data.고가, data.저가, data.종가, fastk_period=5, slowk_period=3, slowk_matype=0, slowd_period=3, slowd_matype=0)
+    # data['slowk']=slowk
+    # data['slowd']=slowd
+    # # Volatility Indicator Functions
+    # data['atr']=talib.ATR(data.고가, data.저가, data.종가, timeperiod=14)
+    # # # Volume indicator Functions
+    # # data['adosc']=talib.ADOSC(data.고가, data.저가, data.종가, data.Volume, fastperiod=3, s저가period=10)
 
     return data
