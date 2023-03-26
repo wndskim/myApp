@@ -62,7 +62,7 @@ if chk00:
     fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma240'], name='sma240'))
     fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma480'], name='sma480'))
 
-    fig.up날짜_layout(title=종목+' stock price with SMA5, SMA10, SMA20, SMA60, SMA120, SMA240 and SMA480')
+    fig.update_layout(title=종목+' stock price with SMA5, SMA10, SMA20, SMA60, SMA120, SMA240 and SMA480')
 
     st.plotly_chart(fig)
     # fig.show()
