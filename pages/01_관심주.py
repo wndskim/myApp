@@ -25,6 +25,7 @@ if chk00:
         df.sort_values(by='등락률', ascending=False, inplace=True)
 
         df.reset_index(inplace=True)
+        df.drop('index', axis=1, inplace=True)
 
         st.write('코스피200',len(df),'건')
         st.dataframe(df)
