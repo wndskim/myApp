@@ -48,12 +48,12 @@ if chk00:
     df_개별종목=GetData.load_from_pykrx_개별종목(시작일,종료일,_티커,)
     df_개별종목=GetData.set_indicator(df_개별종목)
 
-    st.write(종목, _dict[종목],_티커)
+    # st.write(종목, _dict[종목],_티커)
     # st.dataframe(df_개별종목)
 
 
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['종가'], name=종목+' stock price'))
+    fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['종가'], name='종가'))
     fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma5'], name='sma5'))
     fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma10'], name='sma10'))
     fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma20'], name='sma20'))
