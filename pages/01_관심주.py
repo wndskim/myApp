@@ -53,16 +53,16 @@ if chk00:
 
 
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=df_개별종목['date'], y=df_개별종목['close'], name=종목+' stock price'))
-    fig.add_trace(go.Scatter(x=df_개별종목['date'], y=df_개별종목['sma5'], name='sma5'))
-    fig.add_trace(go.Scatter(x=df_개별종목['date'], y=df_개별종목['sma10'], name='sma10'))
-    fig.add_trace(go.Scatter(x=df_개별종목['date'], y=df_개별종목['sma20'], name='sma20'))
-    fig.add_trace(go.Scatter(x=df_개별종목['date'], y=df_개별종목['sma60'], name='sma60'))
-    fig.add_trace(go.Scatter(x=df_개별종목['date'], y=df_개별종목['sma120'], name='sma120'))
-    fig.add_trace(go.Scatter(x=df_개별종목['date'], y=df_개별종목['sma240'], name='sma240'))
-    fig.add_trace(go.Scatter(x=df_개별종목['date'], y=df_개별종목['sma480'], name='sma480'))
+    fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['종가'], name=종목+' stock price'))
+    fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma5'], name='sma5'))
+    fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma10'], name='sma10'))
+    fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma20'], name='sma20'))
+    fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma60'], name='sma60'))
+    fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma120'], name='sma120'))
+    fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma240'], name='sma240'))
+    fig.add_trace(go.Scatter(x=df_개별종목['날짜'], y=df_개별종목['sma480'], name='sma480'))
 
-    fig.update_layout(title=종목+' stock price with SMA5, SMA10, SMA20, SMA60, SMA120, SMA240 and SMA480')
+    fig.up날짜_layout(title=종목+' stock price with SMA5, SMA10, SMA20, SMA60, SMA120, SMA240 and SMA480')
 
     st.plotly_chart(fig)
     # fig.show()
