@@ -13,7 +13,7 @@ st.write('관심주')
 
 chk00=st.sidebar.checkbox('코스피200 보기',value=False)
 if chk00:
-    col1,col2,col3=st.columns([1,5,1])
+    col1,col2,col3=st.columns([1,5,3])
     with col1:
         조회일=st.date_input('조회일', date.today())
         조회일=str(조회일).replace('-','')
