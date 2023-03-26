@@ -6,7 +6,7 @@ import ta
 def load_from_pykrx_해당일전체(조회일):
     return stock.get_market_ohlcv(조회일)
 
-@st.cache
+# @st.cache
 def load_from_pykrx_개별종목(시작일,종료일,티커):
     df=stock.get_market_ohlcv(시작일,종료일,티커,'d',adjusted=False)
 
