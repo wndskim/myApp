@@ -36,5 +36,5 @@ if chk00:
 
     _dict=dict(zip(종목s,티커s))
     종목=container.selectbox('선택', 종목s)
-    container.write(종목,_dict[종목])
-    st.write(_dict[종목])
+    # container.write(종목)
+    st.write(종목, _dict[종목])
