@@ -39,7 +39,14 @@ if chk00:
         st.dataframe(df)
 
         _종목=container.selectbox('선택', _종목s)
+
+        st.text(_종목)
+
         _티커=_dict[_종목]
+
+        st.write(_종목, _티커)
+
+        
     with col3:
         Share.참조링크보기(_티커,_종목)
 
@@ -49,7 +56,7 @@ if chk00:
     st.dataframe(df_개별종목)
 
 
-    
+
     df_w=df_개별종목.resample('W').agg({'시가':'first','고가':'max','저가':'min','종가':'last','거래량':'sum','거래대금':'sum'})
     df_m=df_개별종목.resample('M',closed='right',label='right').agg({'시가':'first','고가':'max','저가':'min','종가':'last','거래량':'sum','거래대금':'sum'})
 
