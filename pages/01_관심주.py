@@ -25,7 +25,7 @@ chk00=st.sidebar.checkbox('코스피200 보기',value=False)
 if chk00:
     # Initialise session state
     if "load_state" not in st.session_state: st.session_state.load_state=False
-    if st.session_state.load_state:
+    if not st.session_state.load_state:
         티커s=stock.get_index_portfolio_deposit_file('1028')
         종목s=[]
         for 티커 in 티커s:
