@@ -47,8 +47,6 @@ if chk00:
         # _df1=pd.DataFrame(list(zip(티커s, 종목s)), columns=['티커', '종목'])
         # _dict=dict(zip(종목s,티커s))
 
-        전조회일=''
-
         if 조회일!=전조회일:
             _df2=GetData.load_from_pykrx_해당일전체(조회일)
             _df2=_df2[_df2.index.isin(티커s)]
