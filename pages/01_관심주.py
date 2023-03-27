@@ -38,16 +38,17 @@ if chk00:
         st.write('코스피200',len(df),'건')
         st.dataframe(df)
 
-        _종목=container.selectbox('선택', _종목s)
+        # _종목=container.selectbox('선택', _종목s)
+        # _티커=_dict[_종목]
+
+    with col3:
+        _종목=st.selectbox('선택', _종목s)
 
         st.text(_종목)
 
         _티커=_dict[_종목]
 
-        st.write(_종목, _티커)
-
-        
-    with col3:
+        st.write(_종목, _티커)        
         Share.참조링크보기(_티커,_종목)
 
     # 개별종목 일/주/월 차트 그리기
