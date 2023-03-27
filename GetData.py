@@ -2,14 +2,13 @@ import streamlit as st
 from pykrx import stock
 import ta
 
-@st.cache_resource
+# @st.cache_resource
 def load_from_pykrx_해당일전체(조회일):
     return stock.get_market_ohlcv(조회일)
 
 # @st.cache
 def load_from_pykrx_개별종목(시작일,종료일,티커):
     df=stock.get_market_ohlcv(시작일,종료일,티커,'d',adjusted=False)
-
     df['변동액']=df['종가'].diff()
     df['등락률']=df['종가'].pct_change()
     df.dropna(inplace=True)
@@ -17,10 +16,9 @@ def load_from_pykrx_개별종목(시작일,종료일,티커):
     # df['날짜']=df['날짜'].dt.strftime('%Y-%m-%d')
     # df.index=df.index.strftime('%Y-%m-%d')
     df['변동액']=df['변동액'].astype(int)
-
     return df
 
-@st.cache_resource
+# @st.cache_resource
 def Index_Fundamental_조회(시작일, 종료일, 마켓):
     if 마켓=='코스피': market='1001'
     else: market='2001' # 코스닥
