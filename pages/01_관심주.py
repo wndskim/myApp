@@ -25,6 +25,7 @@ chk00=st.sidebar.checkbox('코스피200 보기',value=False)
 if chk00:
     # Initialise session state
     if "load_state" not in st.session_state: st.session_state.load_state=False
+    if "전조회일" not in st.session_state: st.session_state.전조회일=''
     if not st.session_state.load_state:
         티커s=stock.get_index_portfolio_deposit_file('1028')
         종목s=[]
@@ -33,7 +34,6 @@ if chk00:
         _df1=pd.DataFrame(list(zip(티커s, 종목s)), columns=['티커', '종목'])
         _dict=dict(zip(종목s,티커s))
         st.session_state.load_state=True
-        st.session_state.전조회일=''
 
     col1,col2,col3=st.columns([1,5,3])
     with col1:
