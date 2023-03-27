@@ -11,8 +11,10 @@ st.write('관심주')
 시작일=Share.get_date(종료일,260*3) #3년전 날짜
 종료일=종료일.strftime('%Y%m%d')
 
-chk00=st.sidebar.checkbox('코스피200 보기',value=False)
-if chk00:
+# chk00=st.sidebar.checkbox('코스피200 보기',value=False)
+# if chk00:
+btn00=st.sidebar.button('코스피200보기')
+if btn00:
     종목s=[]
     티커s=stock.get_index_portfolio_deposit_file('1028')
     for 티커 in 티커s:
