@@ -27,19 +27,13 @@ if chk00:
     # if "load_state" not in st.session_state: st.session_state.load_state=False
     if "전조회일" not in st.session_state: st.session_state.전조회일=''
     # if not st.session_state.load_state:
-    
-    티커s=stock.get_index_portfolio_deposit_file('1028')
-
-    st.write(티커s)
 
     종목s=[]
+    티커s=stock.get_index_portfolio_deposit_file('1028')
     for 티커 in 티커s:
         종목s.append(stock.get_market_ticker_name(티커))
     _df1=pd.DataFrame(list(zip(티커s, 종목s)), columns=['티커', '종목'])
     _dict=dict(zip(종목s,티커s))
-
-    st.dataframe(_dict)
-
 
         # st.session_state.load_state=True
 
