@@ -62,7 +62,7 @@ if chk00:
             st.write('코스피200',len(df),'건')
             st.dataframe(df)
 
-            전조회일=조회일
+            st.session_state.전조회일=조회일
 
         # _종목=container.selectbox('선택', _종목s)
         # _티커=_dict[_종목]
