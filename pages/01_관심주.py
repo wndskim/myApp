@@ -28,6 +28,9 @@ if chk00:
     if "전조회일" not in st.session_state: st.session_state.전조회일=''
     if not st.session_state.load_state:
         티커s=stock.get_index_portfolio_deposit_file('1028')
+
+        st.write(티커s)
+
         종목s=[]
         for 티커 in 티커s:
             종목s.append(stock.get_market_ticker_name(티커))
@@ -36,7 +39,7 @@ if chk00:
 
         st.dataframe(_dict)
 
-        
+
         st.session_state.load_state=True
 
     col1,col2,col3=st.columns([1,5,3])
