@@ -23,19 +23,12 @@ st.write('관심주')
 
 chk00=st.sidebar.checkbox('코스피200 보기',value=False)
 if chk00:
-    # Initialise session state
-    # if "load_state" not in st.session_state: st.session_state.load_state=False
-    if "전조회일" not in st.session_state: st.session_state.전조회일=''
-    # if not st.session_state.load_state:
-
     종목s=[]
     티커s=stock.get_index_portfolio_deposit_file('1028')
     for 티커 in 티커s:
         종목s.append(stock.get_market_ticker_name(티커))
     _df1=pd.DataFrame(list(zip(티커s, 종목s)), columns=['티커', '종목'])
     _dict=dict(zip(종목s,티커s))
-
-        # st.session_state.load_state=True
 
     col1,col2,col3=st.columns([1,5,3])
     with col1:
@@ -50,24 +43,23 @@ if chk00:
         # _df1=pd.DataFrame(list(zip(티커s, 종목s)), columns=['티커', '종목'])
         # _dict=dict(zip(종목s,티커s))
 
-        if 조회일!=st.session_state.전조회일:
-            _df2=GetData.load_from_pykrx_해당일전체(조회일)
+        _df2=GetData.load_from_pykrx_해당일전체(조회일)
 
-            st.dataframe(_df2)
+        st.dataframe(_df2)
 
-            _df2=_df2[_df2.index.isin(티커s)]
+        _df2=_df2[_df2.index.isin(티커s)]
 
-            df=pd.merge(_df1, _df2, on='티커')
-            df.sort_values(by='등락률', ascending=False, inplace=True)
+        df=pd.merge(_df1, _df2, on='티커')
+        df.sort_values(by='등락률', ascending=False, inplace=True)
 
-            df.reset_index(inplace=True)
-            df.drop('index', axis=1, inplace=True)
-            _종목s=df.종목.tolist()
+        df.reset_index(inplace=True)
+        df.drop('index', axis=1, inplace=True)
+        _종목s=df.종목.tolist()
 
-            st.write('코스피200',len(df),'건')
-            st.dataframe(df)
+        st.write('코스피200',len(df),'건')
+        st.dataframe(df)
 
-            st.session_state.전조회일=조회일
+        st.session_state.전조회일=조회일
 
         # _종목=container.selectbox('선택', _종목s)
         # _티커=_dict[_종목]
