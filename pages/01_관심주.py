@@ -33,15 +33,15 @@ if chk00:
 
         df.reset_index(inplace=True)
         df.drop('index', axis=1, inplace=True)
-        종목s=df.종목.tolist()
+        _종목s=df.종목.tolist()
 
         st.write('코스피200',len(df),'건')
         st.dataframe(df)
 
-        종목=container.selectbox('선택', 종목s)
-        _티커=_dict[종목]
+        _종목=container.selectbox('선택', _종목s)
+        _티커=_dict[_종목]
     with col3:
-        Share.참조링크보기(_티커,종목)
+        Share.참조링크보기(_티커,_종목)
 
     # 개별종목 일/주/월 차트 그리기
     df_개별종목=GetData.load_from_pykrx_개별종목(시작일,종료일,_티커)
