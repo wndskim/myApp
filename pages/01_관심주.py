@@ -7,16 +7,6 @@ import plotly.graph_objs as go
 
 st.write('관심주')
 
-
-
-
-# if selected_date != previous_date:
-#     st.write('The date has changed')
-#     previous_date = selected_date
-
-
-
-
 종료일=date.today()
 시작일=Share.get_date(종료일,260*3) #3년전 날짜
 종료일=종료일.strftime('%Y%m%d')
@@ -44,9 +34,6 @@ if chk00:
         # _dict=dict(zip(종목s,티커s))
 
         _df2=GetData.load_from_pykrx_해당일전체(조회일)
-
-        st.dataframe(_df2)
-
         _df2=_df2[_df2.index.isin(티커s)]
 
         df=pd.merge(_df1, _df2, on='티커')
@@ -59,16 +46,11 @@ if chk00:
         st.write('코스피200',len(df),'건')
         st.dataframe(df)
 
-        st.session_state.전조회일=조회일
-
         # _종목=container.selectbox('선택', _종목s)
         # _티커=_dict[_종목]
 
     with col3:
         _종목=st.selectbox('선택', _종목s)
-
-        st.text(_종목)
-
         _티커=_dict[_종목]
 
         st.write(_종목, _티커)
@@ -79,11 +61,6 @@ if chk00:
 
     # 개별종목 일/주/월 차트 그리기
     df_개별종목=GetData.load_from_pykrx_개별종목(시작일,종료일,_티커)
-
-    st.dataframe(df_개별종목)
-
-
-
     df_w=df_개별종목.resample('W').agg({'시가':'first','고가':'max','저가':'min','종가':'last','거래량':'sum','거래대금':'sum'})
     df_m=df_개별종목.resample('M',closed='right',label='right').agg({'시가':'first','고가':'max','저가':'min','종가':'last','거래량':'sum','거래대금':'sum'})
 
