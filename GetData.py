@@ -2,7 +2,7 @@ import streamlit as st
 from pykrx import stock
 import ta
 
-@st.cache
+@st.cache_resource
 def load_from_pykrx_해당일전체(조회일):
     return stock.get_market_ohlcv(조회일)
 
@@ -20,7 +20,7 @@ def load_from_pykrx_개별종목(시작일,종료일,티커):
 
     return df
 
-@st.cache
+@st.cache_resource
 def Index_Fundamental_조회(시작일, 종료일, 마켓):
     if 마켓=='코스피': market='1001'
     else: market='2001' # 코스닥
@@ -37,7 +37,6 @@ def Index_Fundamental_조회(시작일, 종료일, 마켓):
     return df
 
 def set_indicator(data):
-
     data['등락']=data.종가.diff(periods=1)
     data['등락률']=data.종가.pct_change(periods=1)*100
     data['Low52']=data.저가.rolling(min_periods=1, window=262, center=False).min()
