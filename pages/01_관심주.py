@@ -20,13 +20,13 @@ if chk00:
         종목s.append(stock.get_market_ticker_name(티커))
     _df1=pd.DataFrame(list(zip(티커s, 종목s)), columns=['티커', '종목'])
     _dict=dict(zip(종목s,티커s))
-    
-    container=st.sidebar.container()
+
 
     col1,col2,col3=st.columns([1,5,3])
     with col1:
         조회일=st.date_input('조회일', date.today())
         조회일=str(조회일).replace('-','')
+        container=st.container()
     with col2:
         _df2=GetData.load_from_pykrx_해당일전체(조회일)
         _df2=_df2[_df2.index.isin(티커s)]
