@@ -2,7 +2,7 @@ import streamlit as st
 from pykrx import stock
 import ta
 
-@st.cache
+@st.cache_data
 def load_from_pykrx_해당일전체(조회일):
     return stock.get_market_ohlcv(조회일)
 
