@@ -2,7 +2,7 @@ import streamlit as st
 from pykrx import stock
 import ta
 
-@st.cache_data
+@st.cache_resource
 def load_from_pykrx_해당일전체(조회일):
     return stock.get_market_ohlcv(조회일)
 
@@ -18,7 +18,7 @@ def load_from_pykrx_개별종목(시작일,종료일,티커):
     df['변동액']=df['변동액'].astype(int)
     return df
 
-@st.cache
+@st.cache_resource
 def Index_Fundamental_조회(시작일, 종료일, 마켓):
     if 마켓=='코스피': market='1001'
     else: market='2001' # 코스닥
