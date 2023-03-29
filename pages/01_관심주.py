@@ -45,11 +45,11 @@ if chk00:
 
             st.session_state['load_data']=True
 
-        st.write('코스피200',len(df),'건')
-        st.dataframe(df)
+            st.write('코스피200',len(df),'건')
+            st.dataframe(df)
 
-        _종목=container.selectbox('선택', _종목s)
-        _티커=_dict[_종목]
+            _종목=container.selectbox('선택', _종목s)
+            _티커=_dict[_종목]
 
     with col3:
         # _종목=st.selectbox('선택', _종목s)
