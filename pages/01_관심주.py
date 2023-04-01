@@ -73,7 +73,7 @@ if chk01:
 
 
     # excel_file='../Data/차트영웅저평가.xlsx'
-    excel_file='myApp/Data/차트영웅저평가.xlsx'
+    excel_file='./Data/차트영웅저평가.xlsx'
     df=pd.read_excel(excel_file)
 
     st.dataframe(df)
