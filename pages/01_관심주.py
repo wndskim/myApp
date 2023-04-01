@@ -2,7 +2,7 @@ import streamlit as st
 from pykrx import stock
 import pandas as pd
 from datetime import date, datetime
-import GetData, Share, Chart
+from Codes import GetData, Share, Chart
 import plotly.graph_objs as go
 
 st.write('관심주')
