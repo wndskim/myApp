@@ -65,8 +65,12 @@ if chk00:
     Chart.차트_주봉(df_w,_종목)
     Chart.차트_월봉(df_m,_종목)
 
+chk01=st.sidebar.checkbox('저평가 종목보기(PER,ROA 조함) 보기',value=False)
+if chk01:
+    excel_file=r'C:\Google Drive (wndskim.eric@gmail.com)\MyStocks\myApp\myApp\Data\차트영웅저평가.xlsx'
+    df=pd.read_excel(excel_file)
 
-
+    st.dataframe(df)
 
 
 
