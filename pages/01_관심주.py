@@ -72,7 +72,7 @@ if chk01:
     st.write(os.getcwd())
 
 
-    excel_file='./myApp/Data/차트영웅저평가.xlsx'
+    excel_file='app/myApp/Data/차트영웅저평가.xlsx'
     df=pd.read_excel(excel_file)
 
     st.dataframe(df)
