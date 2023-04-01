@@ -1,9 +1,10 @@
 import streamlit as st
 from pykrx import stock
 import pandas as pd
+import os
 from datetime import date, datetime
-from Codes import GetData, Share, Chart
 import plotly.graph_objs as go
+from Codes import GetData, Share, Chart
 
 st.write('관심주')
 
@@ -67,6 +68,10 @@ if chk00:
 
 chk01=st.sidebar.checkbox('저평가 종목보기(PER,ROA 조함) 보기',value=False)
 if chk01:
+
+    st.write(os.getcwd())
+
+    
     excel_file=r'..\Data\차트영웅저평가.xlsx'
     df=pd.read_excel(excel_file)
 
