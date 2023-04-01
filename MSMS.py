@@ -1,6 +1,6 @@
 import streamlit as st
 
-import Display
+from Codes import Display
 
 
 def main():
