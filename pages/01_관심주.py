@@ -67,7 +67,7 @@ if chk00:
 
 chk01=st.sidebar.checkbox('저평가 종목보기(PER,ROA 조함) 보기',value=False)
 if chk01:
-    excel_file=r'..\Data\차트영웅저평가.xlsx'
+    excel_file=r'.\Data\차트영웅저평가.xlsx'
     df=pd.read_excel(excel_file)
 
     st.dataframe(df)
