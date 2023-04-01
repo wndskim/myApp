@@ -66,16 +66,17 @@ if chk00:
     Chart.차트_주봉(df_w,_종목)
     Chart.차트_월봉(df_m,_종목)
 
-chk01=st.sidebar.checkbox('저평가 종목보기(PER,ROA 조함) 보기',value=False)
+chk01=st.sidebar.checkbox('저평가 종목보기(PER,ROA 조합) 보기',value=False)
 if chk01:
 
     st.write(os.getcwd())
 
+    st.text('파일을 읽어오지 못하는 오류 발생 ..!!')
 
-    excel_file='/myapp/Data/차트영웅저평가.xlsx'
-    df=pd.read_excel(excel_file)
+    # excel_file='/myapp/Data/차트영웅저평가.xlsx'
+    # df=pd.read_excel(excel_file)
 
-    st.dataframe(df)
+    # st.dataframe(df)
 
 
 
