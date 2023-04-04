@@ -73,7 +73,7 @@ if chk01:
 
     st.text('파일을 읽어오지 못하는 오류 발생 ..!!')
 
-    excel_file='차트영웅저평가.xlsx'
+    excel_file='./차트영웅저평가.xlsx'
     df=pd.read_excel(excel_file)
 
     st.dataframe(df)
