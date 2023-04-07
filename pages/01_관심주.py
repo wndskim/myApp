@@ -54,7 +54,7 @@ if chk00:
         # _종목s=df1.종목.tolist()
 
         st.write('코스피200 하락률순')
-        st.dataframe(df1)        
+        st.dataframe(df2)        
 
     Share.참조링크보기(_티커,_종목)
 
