@@ -31,14 +31,14 @@ if chk00:
         _df2=_df2[_df2.index.isin(티커s)]
 
         df=pd.merge(_df1, _df2, on='티커')
-        df.sort_values(by='등락률', ascending=False, inplace=True)
+        df1=df.sort_values(by='등락률', ascending=False)
 
-        df.reset_index(inplace=True)
-        df.drop('index', axis=1, inplace=True)
-        _종목s=df.종목.tolist()
+        df1.reset_index(inplace=True)
+        df1.drop('index', axis=1, inplace=True)
+        _종목s=df1.종목.tolist()
 
-        st.write('코스피200',len(df),'건')
-        st.dataframe(df)
+        st.write('코스피200',len(df1),'건')
+        st.dataframe(df1)
 
         _종목=container.selectbox('선택', _종목s,key='선택종목')
         _티커=_dict[_종목]
@@ -48,7 +48,7 @@ if chk00:
         # _티커=_dict[_종목]
         # st.write(_종목, _티커)
 
-        container.write(Share.참조링크보기(_티커,_종목))
+        Share.참조링크보기(_티커,_종목)
 
     # 개별종목 일/주/월 차트 그리기
     df_개별종목=GetData.load_from_pykrx_개별종목(시작일,종료일,_티커)
