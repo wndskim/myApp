@@ -21,7 +21,7 @@ if chk00:
     _df1=pd.DataFrame(list(zip(티커s, 종목s)), columns=['티커', '종목'])
     _dict=dict(zip(종목s,티커s))
 
-    col1,col2,col3=st.columns([1,5,3])
+    col1,col2,col3=st.columns([1,5,5])
     with col1:
         조회일=st.date_input('조회일', date.today())
         조회일=str(조회일).replace('-','')
@@ -70,7 +70,7 @@ if chk00:
     df_m=GetData.set_indicator(df_m)
     df_m.reset_index(inplace=True)
 
-    Chart.차트_일봉(df_개별종목,_종목)
+    Chart.차트_일봉(df_개별종목[-100:],_종목)
     Chart.차트_주봉(df_w,_종목)
     Chart.차트_월봉(df_m,_종목)
 
