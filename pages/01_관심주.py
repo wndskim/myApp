@@ -37,7 +37,7 @@ if chk00:
         df1.drop('index', axis=1, inplace=True)
         _종목s=df1.종목.tolist()
 
-        st.write('코스피200',len(df1),'건')
+        st.write('코스피200 상승률순')
         st.dataframe(df1)
 
         _종목=container.selectbox('선택', _종목s,key='선택종목')
@@ -47,8 +47,16 @@ if chk00:
         # _종목=st.selectbox('선택', _종목s,key='참조종목')
         # _티커=_dict[_종목]
         # st.write(_종목, _티커)
+        df2=df.sort_values(by='등락률', ascending=True)
 
-        Share.참조링크보기(_티커,_종목)
+        df2.reset_index(inplace=True)
+        df2.drop('index', axis=1, inplace=True)
+        # _종목s=df1.종목.tolist()
+
+        st.write('코스피200 하락률순')
+        st.dataframe(df1)        
+
+    Share.참조링크보기(_티커,_종목)
 
     # 개별종목 일/주/월 차트 그리기
     df_개별종목=GetData.load_from_pykrx_개별종목(시작일,종료일,_티커)
