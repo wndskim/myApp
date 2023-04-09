@@ -84,7 +84,8 @@ if chk01:
     # excel_file='차트영웅저평가.xlsx'
     # excel_file='a.xlsx'
     # df=pd.read_excel(excel_file)
-    df=pd.read_excel("a.xlsx")
+    df=pd.read_excel("./a.xlsx")
+    # df=pd.read_excel("./Data/코스피200위치.xlsx")
 
     st.dataframe(df)
 
