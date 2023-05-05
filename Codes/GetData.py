@@ -2,6 +2,7 @@ import streamlit as st
 from pykrx import stock
 import OpenDartReader
 import ta,os
+import pandas as pd
 
 # from dotenv import load_dotenv
 # load_dotenv()
@@ -15,7 +16,7 @@ def DART_재무정보():
     df=dart.finstate('삼성전자', 2021, reprt_code='11013') # 1분기=>11013, 반기=>11012, 3분기=>11014, 사업보고서=>11011
     if len(df)<1: st.text('재무정보 없음..!!'); return
     
-    return df
+    return pd.DataFrame(df)
 
 
 
