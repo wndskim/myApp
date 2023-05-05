@@ -10,4 +10,4 @@ matplotlib
 pykrx
 fredapi
 python-dotenv
-OpenDartReader
+opendartreader
