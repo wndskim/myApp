@@ -7,6 +7,6 @@ st.write(os.getenv("PATH"))
 
 
 조회일=st.sidebar.date_input('조회일')
-GetData(조회일)
+GetData.금감원_공시내역_보기(조회일)
 
 
