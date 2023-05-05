@@ -10,7 +10,8 @@ import pandas as pd
 def DART_재무정보():
     API_KEY_DART=os.getenv("API_KEY_DART")
     dart=OpenDartReader(API_KEY_DART)
-    df=pd.DataFrame(dart.finstate('삼성전자', 2021, reprt_code='11013')) # 1분기=>11013, 반기=>11012, 3분기=>11014, 사업보고서=>11011
+    # df=pd.DataFrame(dart.finstate('삼성전자', 2021, reprt_code='11013')) # 1분기=>11013, 반기=>11012, 3분기=>11014, 사업보고서=>11011
+    df=pd.DataFrame(dart.finstate_all('삼성전자', 2021)) # 1분기=>11013, 반기=>11012, 3분기=>11014, 사업보고서=>11011
     if len(df)<1: st.text('재무정보 없음..!!'); return
     df.ord=df.ord.astype(int)
     df.sort_values(by='ord',ascending=True,inplace=True)
