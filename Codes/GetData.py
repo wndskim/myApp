@@ -1,6 +1,32 @@
 import streamlit as st
 from pykrx import stock
-import ta
+import OpenDartReader
+import ta,os
+
+from dotenv import load_dotenv
+load_dotenv()
+
+
+def 금감원_공시내역_보기(조회일):
+    API_KEY_DART=os.getenv("API_KEY_Dart")
+    dart=OpenDartReader(API_KEY_DART)
+    # 금일 금강원 공시 내역
+    조회일=조회일.strftime('%Y%m%d')
+    df=dart.list(start=조회일, end=조회일, final=False)
+    if len(df)<1: st.text('금일 공시내역 없음..!!'); return
+
+    df['날짜']=df['rcept_dt']
+    df['티커']=df['stock_code']
+    df['종목명']=df['corp_name']
+    df['공시내용']=df['report_nm']
+
+    df=df.drop(['corp_code','corp_name','stock_code','corp_cls','report_nm','rcept_no','rcept_dt'], axis=1)
+    df = df.reindex(columns = ['날짜','티커','종목명','공시내용'])
+
+    st.markdown('-----')
+    st.text('금일 금감원 공시 건수:'+str(len(df))+'건')
+    st.dataframe(df)
+    return
 
 @st.cache_resource
 def load_from_pykrx_해당일전체(조회일):
