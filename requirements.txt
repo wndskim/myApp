@@ -9,3 +9,4 @@ requests
 matplotlib
 pykrx
 fredapi
+python-dotenv
