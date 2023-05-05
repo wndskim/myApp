@@ -3,15 +3,20 @@ from pykrx import stock
 import OpenDartReader
 import ta,os
 
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
+
+# import os
+
+# api_key = os.getenv("MY_API_KEY")
+# # Use the API key in your code
 
 
 def 금감원_공시내역_보기(조회일):
 
     st.write(os.getenv("PATH"))
 
-    API_KEY_DART=os.getenv("API_KEY_Dart")
+    API_KEY_DART=os.getenv("API_KEY_DART")
     dart=OpenDartReader(API_KEY_DART)
     # 금일 금강원 공시 내역
     조회일=조회일.strftime('%Y%m%d')
