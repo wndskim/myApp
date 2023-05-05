@@ -13,10 +13,11 @@ def DART_재무정보():
     # 금일 금강원 공시 내역
     # 조회일=조회일.strftime('%Y%m%d')
     # df=dart.(start=조회일, end=조회일, final=False)
-    df=dart.finstate('삼성전자', 2021, reprt_code='11013') # 1분기=>11013, 반기=>11012, 3분기=>11014, 사업보고서=>11011
+    df=pd.DataFrame(dart.finstate('삼성전자', 2021, reprt_code='11013')) # 1분기=>11013, 반기=>11012, 3분기=>11014, 사업보고서=>11011
     if len(df)<1: st.text('재무정보 없음..!!'); return
+    df.ord=df.ord.astype(int)
     
-    return pd.DataFrame(df)
+    return df
 
 
 
