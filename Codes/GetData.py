@@ -7,10 +7,10 @@ import pandas as pd
 # from dotenv import load_dotenv
 # load_dotenv()
 
-def DART_재무정보():
+def DART_재무정보(종목):
     API_KEY_DART=os.getenv("API_KEY_DART")
     dart=OpenDartReader(API_KEY_DART)
-    df=pd.DataFrame(dart.finstate('삼성전자', 2022, reprt_code='11011')) # 1분기=>11013, 반기=>11012, 3분기=>11014, 사업보고서=>11011
+    df=pd.DataFrame(dart.finstate(종목, 2022, reprt_code='11011')) # 1분기=>11013, 반기=>11012, 3분기=>11014, 사업보고서=>11011
     # df=pd.DataFrame(dart.finstate_all('삼성전자', 2022)) # 1분기=>11013, 반기=>11012, 3분기=>11014, 사업보고서=>11011
     if len(df)<1: st.text('재무정보 없음..!!'); return
     df.ord=df.ord.astype(int)
