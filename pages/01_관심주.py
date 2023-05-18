@@ -9,7 +9,7 @@ from Codes import GetData, Share, Chart
 st.write('관심주')
 
 종료일=date.today()
-시작일=Share.get_date(종료일,260*3) #3년전 날짜
+시작일=Share.get_date(종료일,260*2) #2년전 날짜
 종료일=종료일.strftime('%Y%m%d')
 
 chk00=st.sidebar.checkbox('코스피200 보기',value=False)
