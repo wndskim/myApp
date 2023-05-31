@@ -166,6 +166,9 @@ if chk01:
     선택_인덱스id=df_인덱스.loc[선택_인덱스명].values[0]
     티커s=get_tickers(선택_인덱스id)
 
+
+    st.write(시작일)
+
     가격s,종목s=[],[]
     for 티커 in 티커s:
         가격s.append(download_history(티커,시작일[:4]+'-'+시작일[4:6]+'-'+시작일[-2:]))
@@ -176,7 +179,7 @@ if chk01:
 
     st.dataframe(종목별가격)
 
-    
+
     월종목별가격=종목별가격.resample('M').last()
     월종목별가격.index=월종목별가격.index.strftime('%Y-%m-%d')
 
