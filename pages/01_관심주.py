@@ -173,6 +173,10 @@ if chk01:
 
     종목별가격=pd.concat(가격s, axis=1)
     종목별가격.columns=종목s
+
+    st.dataframe(종목별가격)
+
+    
     월종목별가격=종목별가격.resample('M').last()
     월종목별가격.index=월종목별가격.index.strftime('%Y-%m-%d')
 
