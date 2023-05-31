@@ -4,9 +4,6 @@ import OpenDartReader
 import ta,os
 import pandas as pd
 
-# from dotenv import load_dotenv
-# load_dotenv()
-
 def DART_재무정보(종목):
     API_KEY_DART=os.getenv("API_KEY_DART")
     dart=OpenDartReader(API_KEY_DART)
