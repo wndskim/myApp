@@ -171,7 +171,8 @@ if chk01:
 
     가격s,종목s=[],[]
     for 티커 in 티커s:
-        가격s.append(download_history(티커,시작일[:4]+'-'+시작일[4:6]+'-'+시작일[-2:]))
+        가격s.append(download_history(티커,시작일))
+        # 가격s.append(download_history(티커,시작일[:4]+'-'+시작일[4:6]+'-'+시작일[-2:]))
         종목s.append(stock.get_market_ticker_name(티커))
 
     종목별가격=pd.concat(가격s, axis=1)
