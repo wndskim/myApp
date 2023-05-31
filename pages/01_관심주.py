@@ -13,9 +13,11 @@ st.write('관심주')
 시작일=Share.get_date(종료일,260*2) #2년전 날짜
 종료일=종료일.strftime('%Y%m%d')
 
+@st.cache_data
 def get_tickers(인덱스):
     return stock.get_index_portfolio_deposit_file(인덱스)
 
+@st.cache_data
 def download_history(티커,시작일):
     return yf.download(티커+'.KS',start=시작일)['Close']
 
