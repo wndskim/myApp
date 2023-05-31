@@ -11,3 +11,4 @@ pykrx
 fredapi
 python-dotenv
 opendartreader
+yfinance
