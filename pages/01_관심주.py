@@ -1,4 +1,5 @@
 import streamlit as st
+import yfinance as yf
 from pykrx import stock
 import pandas as pd
 import os
@@ -11,6 +12,12 @@ st.write('관심주')
 종료일=date.today()
 시작일=Share.get_date(종료일,260*2) #2년전 날짜
 종료일=종료일.strftime('%Y%m%d')
+
+def get_tickers(인덱스):
+    return stock.get_index_portfolio_deposit_file(인덱스)
+
+def download_history(티커,시작일):
+    return yf.download(티커+'.KS',start=시작일)['Close']
 
 chk00=st.sidebar.checkbox('코스피200 보기',value=False)
 if chk00:
@@ -74,20 +81,145 @@ if chk00:
     Chart.차트_주봉(df_w,_종목)
     Chart.차트_월봉(df_m,_종목)
 
-chk01=st.sidebar.checkbox('저평가 종목보기(PER,ROA 조합) 보기',value=False)
+chk01=st.sidebar.checkbox('인덱스별(업종별) 기간 상승률 순위',value=False)
 if chk01:
 
-    st.write(os.getcwd())
+# def 인덱스별_기간상승률(시작일,종료일):
 
-    st.text('파일을 읽어오지 못하는 오류 발생 ..!!')
+    인덱스명s=[]
+    tickers = stock.get_index_ticker_list(market='KOSPI')
+    for ticker in tickers:
+        인덱스명s.append(stock.get_index_ticker_name(ticker))
+    df_인덱스=pd.DataFrame({'인덱스명':인덱스명s,'인덱스':tickers}).set_index('인덱스명')
 
-    # excel_file='차트영웅저평가.xlsx'
-    # excel_file='a.xlsx'
-    # df=pd.read_excel(excel_file)
-    df=pd.read_excel("./a.xlsx")
-    # df=pd.read_excel("./Data/코스피200위치.xlsx")
+    df = stock.get_index_price_change(시작일, 종료일, "KOSPI").sort_values(by='등락률', ascending=False)
+    df = df.reset_index()
+    df=pd.merge(df,df_인덱스,left_on='지수명',right_on='인덱스명',how='left')
 
-    st.dataframe(df)
+    df_업종=df[~df.지수명.str.contains('코스피 200')]
+    df_업종=df_업종[~df_업종.지수명.str.contains('코스피200')]
+    df_업종=df_업종[~df_업종.지수명.str.contains('코스피 50')]
+    df_업종=df_업종[~df_업종.지수명.str.contains('코스피 100')]
+    df_업종=df_업종[~df_업종.지수명.str.contains('코스피 대형주')]
+    df_업종=df_업종[~df_업종.지수명.str.contains('코스피 소형주')]
+    df_업종=df_업종[~df_업종.지수명.str.contains('코스피 중형주')]
+
+
+    업종인덱스s=df_업종.인덱스.to_list()
+    인덱스별종가s=[];인덱스명s=[]
+    for i,업종인덱스 in enumerate(업종인덱스s):
+        인덱스별종가s.append(stock.get_index_ohlcv(시작일, 종료일, 업종인덱스, "d")['종가'])
+        인덱스명s.append(stock.get_index_ticker_name(업종인덱스))
+        print(i,업종인덱스)
+
+    인덱스별가격=pd.concat(인덱스별종가s, axis=1)
+    인덱스별가격.columns=인덱스명s
+    월인덱스별가격=인덱스별가격.resample('M').last()
+    월인덱스별가격.index=월인덱스별가격.index.strftime('%Y-%m-%d')
+    월인덱스별등락률=인덱스별가격.pct_change().resample('M').agg(lambda x : (x+1).prod()-1)
+    월인덱스별등락률.loc[:, 인덱스명s[0]:인덱스명s[-1]] = 월인덱스별등락률.loc[:, 인덱스명s[0]:인덱스명s[-1]].applymap(lambda x: "{:.4f}".format(x))
+    월인덱스별등락률.index=월인덱스별등락률.index.strftime('%Y-%m-%d')
+
+    ret_12_인덱스=월인덱스별등락률.rolling(12).agg(lambda x : (x+1).prod()-1)
+    ret_6_인덱스=월인덱스별등락률.rolling(6).agg(lambda x : (x+1).prod()-1)
+    ret_3_인덱스=월인덱스별등락률.rolling(3).agg(lambda x : (x+1).prod()-1)
+    ret_1_인덱스=월인덱스별등락률.rolling(1).agg(lambda x : (x+1).prod()-1)
+
+    for i in range(1,7):
+        df_ret12_인덱스=pd.DataFrame(ret_12_인덱스.iloc[i*-1].nlargest(30))
+        df_ret6_인덱스=pd.DataFrame(ret_6_인덱스.iloc[i*-1].nlargest(30))
+        df_ret3_인덱스=pd.DataFrame(ret_3_인덱스.iloc[i*-1].nlargest(30))
+        df_ret1_인덱스=pd.DataFrame(ret_1_인덱스.iloc[i*-1].nlargest(30))
+        df_ret12_인덱스.reset_index(inplace=True)
+        df_ret6_인덱스.reset_index(inplace=True)
+        df_ret3_인덱스.reset_index(inplace=True)
+        df_ret1_인덱스.reset_index(inplace=True)
+
+        df_ret12_인덱스=pd.merge(df_ret12_인덱스,df_인덱스,left_on='index',right_on='인덱스명',how='left')
+        df_ret6_인덱스=pd.merge(df_ret6_인덱스,df_인덱스,left_on='index',right_on='인덱스명',how='left')
+        df_ret3_인덱스=pd.merge(df_ret3_인덱스,df_인덱스,left_on='index',right_on='인덱스명',how='left')
+        df_ret1_인덱스=pd.merge(df_ret1_인덱스,df_인덱스,left_on='index',right_on='인덱스명',how='left')
+        df_ret12_인덱스=df_ret12_인덱스.reindex(columns = ['인덱스','index',df_ret12_인덱스.columns[1]]).rename(columns={'index':'인덱스명'})
+        df_ret6_인덱스=df_ret6_인덱스.reindex(columns = ['인덱스','index',df_ret6_인덱스.columns[1]]).rename(columns={'index':'인덱스명'})
+        df_ret3_인덱스=df_ret3_인덱스.reindex(columns = ['인덱스','index',df_ret3_인덱스.columns[1]]).rename(columns={'index':'인덱스명'})
+        df_ret1_인덱스=df_ret1_인덱스.reindex(columns = ['인덱스','index',df_ret1_인덱스.columns[1]]).rename(columns={'index':'인덱스명'})
+
+        col1,col2,col3,col4=st.columns(4)
+        with col1:
+            st.text('12개월 '+str(df_ret12_인덱스.columns[2]))
+            st.dataframe(df_ret12_인덱스)
+        with col2:
+            st.text('6개월 '+str(df_ret6_인덱스.columns[2]))
+            st.dataframe(df_ret6_인덱스)
+        with col3:
+            st.text('3개월 '+str(df_ret3_인덱스.columns[2]))
+            st.dataframe(df_ret3_인덱스)
+        with col4:
+            st.text('1개월 '+str(df_ret1_인덱스.columns[2]))
+            st.dataframe(df_ret1_인덱스)
+
+    ###################
+    df_ret1_인덱스=pd.DataFrame(ret_1_인덱스.iloc[-1].nlargest(30))
+    순위_인덱스명1=df_ret1_인덱스.index.tolist()
+    선택_인덱스명=st.selectbox('선택',순위_인덱스명1)
+
+    선택_인덱스id=df_인덱스.loc[선택_인덱스명].values[0]
+    티커s=get_tickers(선택_인덱스id)
+
+    가격s,종목s=[],[]
+    for 티커 in 티커s:
+        가격s.append(download_history(티커,시작일[:4]+'-'+시작일[4:6]+'-'+시작일[-2:]))
+        종목s.append(stock.get_market_ticker_name(티커))
+
+    종목별가격=pd.concat(가격s, axis=1)
+    종목별가격.columns=종목s
+    월종목별가격=종목별가격.resample('M').last()
+    월종목별가격.index=월종목별가격.index.strftime('%Y-%m-%d')
+
+    월종목별등락률=종목별가격.pct_change().resample('M').agg(lambda x : (x+1).prod()-1)
+    월종목별등락률.loc[:, 종목s[0]:종목s[-1]] = 월종목별등락률.loc[:, 종목s[0]:종목s[-1]].applymap(lambda x: "{:.4f}".format(x))
+    월종목별등락률.index=월종목별등락률.index.strftime('%Y-%m-%d')
+
+    ret_12_종목=월종목별등락률.rolling(12).agg(lambda x : (x+1).prod()-1)
+    ret_6_종목=월종목별등락률.rolling(6).agg(lambda x : (x+1).prod()-1)
+    ret_3_종목=월종목별등락률.rolling(3).agg(lambda x : (x+1).prod()-1)
+    ret_1_종목=월종목별등락률.rolling(1).agg(lambda x : (x+1).prod()-1)
+
+    for i in range(1,7):
+        df_ret12_종목=pd.DataFrame(ret_12_종목.iloc[i*-1].nlargest(30))
+        df_ret6_종목=pd.DataFrame(ret_6_종목.iloc[i*-1].nlargest(30))
+        df_ret3_종목=pd.DataFrame(ret_3_종목.iloc[i*-1].nlargest(30))
+        df_ret1_종목=pd.DataFrame(ret_1_종목.iloc[i*-1].nlargest(30))
+        df_ret12_종목.reset_index(inplace=True)
+        df_ret6_종목.reset_index(inplace=True)
+        df_ret3_종목.reset_index(inplace=True)
+        df_ret1_종목.reset_index(inplace=True)
+
+        df_ret12_종목=df_ret12_종목.rename(columns={'index':'종목'})
+        df_ret6_종목=df_ret6_종목.rename(columns={'index':'종목'})
+        df_ret3_종목=df_ret3_종목.rename(columns={'index':'종목'})
+        df_ret1_종목=df_ret1_종목.rename(columns={'index':'종목'})
+
+        col1,col2,col3,col4=st.columns(4)
+        with col1:
+            st.text('지난 12개월 상승률 순')
+            st.dataframe(df_ret12_종목)
+        with col2:
+            st.text('지난 6개월 상승률 순')
+            st.dataframe(df_ret6_종목)
+        with col3:
+            st.text('지난 3개월 상승률 순')
+            st.dataframe(df_ret3_종목)
+        with col4:
+            st.text('이번달 상승률 순')
+            st.dataframe(df_ret1_종목)
+
+
+    # st.dataframe(월종목별등락률)
+
+    #######################
+
+    # return
 
 
 
