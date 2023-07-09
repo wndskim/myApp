@@ -24,6 +24,8 @@ def 코스피200보기(선택일):
         st.session_state.코스피200 = False
         st.session_state.인덱스별 = True
 
+        st.write(선택일)
+
         종목s=[]
         티커s=stock.get_index_portfolio_deposit_file('1028')
         for 티커 in 티커s:
