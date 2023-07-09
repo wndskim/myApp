@@ -33,7 +33,7 @@ def 코스피200보기(선택일):
 
         col1,col2,col3=st.columns([1,5,5])
         with col1:
-            조회일=st.date_input('조회일', 선택일)
+            조회일=st.date_input('조회일', pd.to_datetime(선택일))
             # 조회일=st.date_input('조회일', date.today())
             조회일=str(조회일).replace('-','')
             container=st.container()
