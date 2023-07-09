@@ -21,10 +21,9 @@ def download_history(티커,시작일):
 
 def 코스피200보기(선택일):
     if st.session_state.코스피200:
-        st.session_state.코스피200 = False
-        st.session_state.인덱스별 = True
+        # st.session_state.코스피200 = False
+        # st.session_state.인덱스별 = True
 
-        st.write(선택일,key1)
 
         종목s=[]
         티커s=stock.get_index_portfolio_deposit_file('1028')
@@ -36,7 +35,12 @@ def 코스피200보기(선택일):
         col1,col2,col3=st.columns([1,5,5])
         with col1:
             조회일=st.date_input('조회일', pd.to_datetime(선택일))
-            st.session_state.선택일=조회일
+            if st.session_state.선택일==조회일:
+                st.session_state.코스피200 = False
+                st.session_state.인덱스별 = True
+            else:
+                st.session_state.선택일=조회일
+                st.write(선택일,key1)
             # 조회일=st.date_input('조회일', date.today())
             조회일=str(조회일).replace('-','')
             container=st.container()
