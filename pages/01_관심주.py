@@ -21,6 +21,70 @@ def get_tickers(인덱스):
 def download_history(티커,시작일):
     return yf.download(티커+'.KS',start=시작일)['Close']
 
+def next_page_function():
+    if st.session_state.코스피200:
+        st.session_state.코스피200 = False
+        st.session_state.인덱스별 = True
+
+    elif st.session_state.인덱스별:
+        st.session_state.show_question_page = False
+        st.session_state.코스피200 = True
+
+    # elif st.session_state.show_answer_page:
+    #     print("increase count")
+    #     st.session_state.current_fact = st.session_state.current_fact + 1
+    #     st.session_state.show_answer_page = False
+    #     if st.session_state.current_fact <= st.session_state.facts_max_count-1:
+    #         st.session_state.show_question_page = True
+    #     else:
+    #         st.session_state.show_submit_page = True
+
+    # elif st.session_state.show_submit_page:
+    #     st.session_state.show_submit_page = False
+    #     st.session_state.show_end_page = True
+
+key1,key2,key3,key4='key1','key2','key3','key4'
+if "코스피200" not in st.session_state:
+    st.session_state.코스피200 = True
+if "인덱스별" not in st.session_state:
+    st.session_state.인덱스별= False
+
+if st.session_state.코스피200:
+    st.markdown("<h1 style='text-align: center; color: white;'>This quizz will test your knowledge about some of the most random facts ever.</h1>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center; color: white;'>Hope you are ready!</h1>", unsafe_allow_html=True)
+    st.markdown("##")
+    _, col2, _ = st.columns([1, 1, 1])
+    option = col2.selectbox('Number of facts', (str(int(len(st.session_state.ids)/10)),
+                                                str(int(len(st.session_state.ids)/4)),
+                                                str(int(len(st.session_state.ids) / 2)),
+                                                str(len(st.session_state.ids))))
+    st.session_state.facts_max_count = int(option)
+    st.session_state.ids = st.session_state.ids[:int(option)]
+    st.session_state.facts = st.session_state.facts[:int(option)]
+    st.session_state.solutions = st.session_state.solutions[:int(option)]
+    st.markdown("##")
+    _, col2, _ = st.columns([1, 1, 1])
+    m = st.markdown("""
+    <style>
+    #root > div:nth-child(1) > div > div > div > div > section > div > div:nth-child(1) > div:nth-child(6) > div > div[class^="css-1r6"] > div:nth-child(1) > div > div > button{ 
+        box-shadow: 4px 9px 18px -9px #276873;
+        background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+        background-color:#599bb3;
+        border-radius:10px;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Arial;
+        font-size:28px;
+        font-weight:bold;
+        padding:15px 41px;
+        text-decoration:none;
+    }
+    </style>""", unsafe_allow_html=True)
+    col2.button("Start test!", on_click=next_page_function, key=key1)
+
+    
+
 chk00=st.sidebar.checkbox('코스피200 보기',value=False)
 if chk00:
     종목s=[]
