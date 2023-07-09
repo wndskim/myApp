@@ -7,8 +7,6 @@ from datetime import date, datetime
 import plotly.graph_objs as go
 from Codes import GetData, Share, Chart
 
-st.write('관심주')
-
 종료일=date.today()
 시작일=Share.get_date(종료일,260*2) #2년전 날짜
 종료일=종료일.strftime('%Y%m%d')
@@ -86,7 +84,6 @@ def 코스피200보기():
         Chart.차트_주봉(df_w,_종목)
         Chart.차트_월봉(df_m,_종목)
 
-
     return
 
 def 인덱스별보기():
@@ -95,21 +92,10 @@ def 인덱스별보기():
 
     st.write('인덱스별보기')
 
-    # elif st.session_state.show_answer_page:
-    #     print("increase count")
-    #     st.session_state.current_fact = st.session_state.current_fact + 1
-    #     st.session_state.show_answer_page = False
-    #     if st.session_state.current_fact <= st.session_state.facts_max_count-1:
-    #         st.session_state.show_question_page = True
-    #     else:
-    #         st.session_state.show_submit_page = True
-
-    # elif st.session_state.show_submit_page:
-    #     st.session_state.show_submit_page = False
-    #     st.session_state.show_end_page = True
-
     return
 
+
+##########################################################################################################
 key1,key2,key3,key4='key1','key2','key3','key4'
 if "코스피200" not in st.session_state:
     st.session_state.코스피200 = True
@@ -149,9 +135,9 @@ if st.session_state.코스피200:
         text-decoration:none;
     }
     </style>""", unsafe_allow_html=True)
-    col2.button("코스피200보기", on_click=코스피200보기, key=key1)
+    col2.sidebar.button("코스피200보기", on_click=코스피200보기, key=key1)
 else:
-    col2.button("인덱스별보기", on_click=인덱스별보기, key=key2)
+    col2.sidebar.button("인덱스별보기", on_click=인덱스별보기, key=key2)
 
 
     
