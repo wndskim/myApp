@@ -105,11 +105,12 @@ if "코스피200" not in st.session_state:
     st.session_state.코스피200 = True
 if "인덱스별" not in st.session_state:
     st.session_state.인덱스별= False
-if "선택일" not in st.session_state:
-    st.session_state.선택일= 종료일
 
-_, col2, _ = st.columns([1, 1, 1])
+# _, col2, _ = st.columns([1, 1, 1])
 if st.session_state.코스피200:
+    if "선택일" not in st.session_state:
+        st.session_state.선택일 = 종료일
+        
     st.markdown("<h1 style='text-align: center; color: white;'>This quizz will test your knowledge about some of the most random facts ever.</h1>", unsafe_allow_html=True)
     st.markdown("<h2 style='text-align: center; color: white;'>Hope you are ready!</h1>", unsafe_allow_html=True)
     st.markdown("##")
@@ -122,26 +123,28 @@ if st.session_state.코스피200:
     # st.session_state.ids = st.session_state.ids[:int(option)]
     # st.session_state.facts = st.session_state.facts[:int(option)]
     # st.session_state.solutions = st.session_state.solutions[:int(option)]
-    st.markdown("##")
+    
+    
+    # st.markdown("##")
     # _, col2, _ = st.columns([1, 1, 1])
 
-    m = st.markdown("""
-    <style>
-    #root > div:nth-child(1) > div > div > div > div > section > div > div:nth-child(1) > div:nth-child(6) > div > div[class^="css-1r6"] > div:nth-child(1) > div > div > button{ 
-        box-shadow: 4px 9px 18px -9px #276873;
-        background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-        background-color:#599bb3;
-        border-radius:10px;
-        display:inline-block;
-        cursor:pointer;
-        color:#ffffff;
-        font-family:Arial;
-        font-size:28px;
-        font-weight:bold;
-        padding:15px 41px;
-        text-decoration:none;
-    }
-    </style>""", unsafe_allow_html=True)
+    # m = st.markdown("""
+    # <style>
+    # #root > div:nth-child(1) > div > div > div > div > section > div > div:nth-child(1) > div:nth-child(6) > div > div[class^="css-1r6"] > div:nth-child(1) > div > div > button{ 
+    #     box-shadow: 4px 9px 18px -9px #276873;
+    #     background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+    #     background-color:#599bb3;
+    #     border-radius:10px;
+    #     display:inline-block;
+    #     cursor:pointer;
+    #     color:#ffffff;
+    #     font-family:Arial;
+    #     font-size:28px;
+    #     font-weight:bold;
+    #     padding:15px 41px;
+    #     text-decoration:none;
+    # }
+    # </style>""", unsafe_allow_html=True)
     st.sidebar.button("코스피200보기", on_click=코스피200보기(st.session_state.선택일), key=key1)
 else:
     st.sidebar.button("인덱스별보기", on_click=인덱스별보기, key=key2)
