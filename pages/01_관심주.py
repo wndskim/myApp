@@ -117,7 +117,7 @@ if st.session_state.코스피200:
     # st.session_state.facts = st.session_state.facts[:int(option)]
     # st.session_state.solutions = st.session_state.solutions[:int(option)]
     st.markdown("##")
-    _, col2, _ = st.columns([1, 1, 1])
+    # _, col2, _ = st.columns([1, 1, 1])
     m = st.markdown("""
     <style>
     #root > div:nth-child(1) > div > div > div > div > section > div > div:nth-child(1) > div:nth-child(6) > div > div[class^="css-1r6"] > div:nth-child(1) > div > div > button{ 
@@ -135,9 +135,9 @@ if st.session_state.코스피200:
         text-decoration:none;
     }
     </style>""", unsafe_allow_html=True)
-    col2.sidebar.button("코스피200보기", on_click=코스피200보기, key=key1)
+    st.sidebar.button("코스피200보기", on_click=코스피200보기, key=key1)
 else:
-    col2.sidebar.button("인덱스별보기", on_click=인덱스별보기, key=key2)
+    st.sidebar.button("인덱스별보기", on_click=인덱스별보기, key=key2)
 
 
     
