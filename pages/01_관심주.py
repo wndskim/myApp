@@ -54,14 +54,15 @@ if st.session_state.코스피200:
     st.markdown("<h2 style='text-align: center; color: white;'>Hope you are ready!</h1>", unsafe_allow_html=True)
     st.markdown("##")
     _, col2, _ = st.columns([1, 1, 1])
-    option = col2.selectbox('Number of facts', (str(int(len(st.session_state.ids)/10)),
-                                                str(int(len(st.session_state.ids)/4)),
-                                                str(int(len(st.session_state.ids) / 2)),
-                                                str(len(st.session_state.ids))))
-    st.session_state.facts_max_count = int(option)
-    st.session_state.ids = st.session_state.ids[:int(option)]
-    st.session_state.facts = st.session_state.facts[:int(option)]
-    st.session_state.solutions = st.session_state.solutions[:int(option)]
+
+    # option = col2.selectbox('Number of facts', (str(int(len(st.session_state.ids)/10)),
+    #                                             str(int(len(st.session_state.ids)/4)),
+    #                                             str(int(len(st.session_state.ids) / 2)),
+    #                                             str(len(st.session_state.ids))))
+    # st.session_state.facts_max_count = int(option)
+    # st.session_state.ids = st.session_state.ids[:int(option)]
+    # st.session_state.facts = st.session_state.facts[:int(option)]
+    # st.session_state.solutions = st.session_state.solutions[:int(option)]
     st.markdown("##")
     _, col2, _ = st.columns([1, 1, 1])
     m = st.markdown("""
