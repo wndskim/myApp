@@ -19,7 +19,7 @@ def get_tickers(인덱스):
 def download_history(티커,시작일):
     return yf.download(티커+'.KS',start=시작일)['Close']
 
-def 코스피200보기():
+def 코스피200보기(선택일):
     if st.session_state.코스피200:
         st.session_state.코스피200 = False
         st.session_state.인덱스별 = True
@@ -33,7 +33,8 @@ def 코스피200보기():
 
         col1,col2,col3=st.columns([1,5,5])
         with col1:
-            조회일=st.date_input('조회일', date.today())
+            조회일=st.date_input('조회일', 선택일)
+            # 조회일=st.date_input('조회일', date.today())
             조회일=str(조회일).replace('-','')
             container=st.container()
         with col2:
@@ -101,6 +102,8 @@ if "코스피200" not in st.session_state:
     st.session_state.코스피200 = True
 if "인덱스별" not in st.session_state:
     st.session_state.인덱스별= False
+if "선택일" not in st.session_state:
+    st.session_state.선택일= 종료일
 
 _, col2, _ = st.columns([1, 1, 1])
 if st.session_state.코스피200:
@@ -118,7 +121,7 @@ if st.session_state.코스피200:
     # st.session_state.solutions = st.session_state.solutions[:int(option)]
     st.markdown("##")
     # _, col2, _ = st.columns([1, 1, 1])
-    
+
     # m = st.markdown("""
     # <style>
     # #root > div:nth-child(1) > div > div > div > div > section > div > div:nth-child(1) > div:nth-child(6) > div > div[class^="css-1r6"] > div:nth-child(1) > div > div > button{ 
@@ -136,7 +139,7 @@ if st.session_state.코스피200:
     #     text-decoration:none;
     # }
     # </style>""", unsafe_allow_html=True)
-    st.sidebar.button("코스피200보기", on_click=코스피200보기, key=key1)
+    st.sidebar.button("코스피200보기", on_click=코스피200보기(st.session_state.선택일), key=key1)
 else:
     st.sidebar.button("인덱스별보기", on_click=인덱스별보기, key=key2)
 
