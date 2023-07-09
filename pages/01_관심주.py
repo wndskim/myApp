@@ -21,8 +21,8 @@ def download_history(티커,시작일):
 
 def 코스피200보기(선택일):
     if st.session_state.코스피200:
-        # st.session_state.코스피200 = False
-        # st.session_state.인덱스별 = True
+        st.session_state.코스피200 = False
+        st.session_state.인덱스별 = True
 
         st.write(선택일,key1)
 
