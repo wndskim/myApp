@@ -22,4 +22,10 @@ def main():
 ##### Main ##########################################
 #####################################################
 if __name__ == '__main__':
+
+    st.set_page_config(
+        page_title="My Stock Management System",
+        layout="centered"
+    )
+    
     main()
