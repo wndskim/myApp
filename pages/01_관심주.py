@@ -36,6 +36,8 @@ def 코스피200보기(선택일):
         col1,col2,col3=st.columns([1,5,5])
         with col1:
             조회일=st.date_input('조회일', pd.to_datetime(선택일))
+            st.session_state.코스피200 = True
+            st.session_state.인덱스별 = False
             st.session_state.선택일=조회일
             # 조회일=st.date_input('조회일', date.today())
             조회일=str(조회일).replace('-','')
@@ -110,41 +112,7 @@ if "인덱스별" not in st.session_state:
 if st.session_state.코스피200:
     if "선택일" not in st.session_state:
         st.session_state.선택일 = 종료일
-        
-    st.markdown("<h1 style='text-align: center; color: white;'>This quizz will test your knowledge about some of the most random facts ever.</h1>", unsafe_allow_html=True)
-    st.markdown("<h2 style='text-align: center; color: white;'>Hope you are ready!</h1>", unsafe_allow_html=True)
-    st.markdown("##")
 
-    # option = col2.selectbox('Number of facts', (str(int(len(st.session_state.ids)/10)),
-    #                                             str(int(len(st.session_state.ids)/4)),
-    #                                             str(int(len(st.session_state.ids) / 2)),
-    #                                             str(len(st.session_state.ids))))
-    # st.session_state.facts_max_count = int(option)
-    # st.session_state.ids = st.session_state.ids[:int(option)]
-    # st.session_state.facts = st.session_state.facts[:int(option)]
-    # st.session_state.solutions = st.session_state.solutions[:int(option)]
-    
-    
-    # st.markdown("##")
-    # _, col2, _ = st.columns([1, 1, 1])
-
-    # m = st.markdown("""
-    # <style>
-    # #root > div:nth-child(1) > div > div > div > div > section > div > div:nth-child(1) > div:nth-child(6) > div > div[class^="css-1r6"] > div:nth-child(1) > div > div > button{ 
-    #     box-shadow: 4px 9px 18px -9px #276873;
-    #     background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-    #     background-color:#599bb3;
-    #     border-radius:10px;
-    #     display:inline-block;
-    #     cursor:pointer;
-    #     color:#ffffff;
-    #     font-family:Arial;
-    #     font-size:28px;
-    #     font-weight:bold;
-    #     padding:15px 41px;
-    #     text-decoration:none;
-    # }
-    # </style>""", unsafe_allow_html=True)
     st.sidebar.button("코스피200보기", on_click=코스피200보기(st.session_state.선택일), key=key1)
 else:
     st.sidebar.button("인덱스별보기", on_click=인덱스별보기, key=key2)
