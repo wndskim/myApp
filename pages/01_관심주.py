@@ -101,20 +101,22 @@ def 인덱스별보기():
 
 ##########################################################################################################
 key1,key2,key3,key4='key1','key2','key3','key4'
-if "코스피200" not in st.session_state:
-    st.session_state.코스피200 = True
-if "인덱스별" not in st.session_state:
-    st.session_state.인덱스별= False
+# if "코스피200" not in st.session_state:
+#     st.session_state.코스피200 = True
+# if "인덱스별" not in st.session_state:
+#     st.session_state.인덱스별= False
 
 # _, col2, _ = st.columns([1, 1, 1])
-if st.session_state.코스피200:
-    if "선택일" not in st.session_state:
-        st.session_state.선택일 = 종료일
+# if st.session_state.코스피200:
+#     if "선택일" not in st.session_state:
+#         st.session_state.선택일 = 종료일
 
-    st.sidebar.button("코스피200보기", on_click=코스피200보기(st.session_state.선택일), key=key1)
-else:
-    st.sidebar.button("인덱스별보기", on_click=인덱스별보기, key=key2)
+#     st.sidebar.button("코스피200보기", on_click=코스피200보기(st.session_state.선택일), key=key1)
+# else:
+#     st.sidebar.button("인덱스별보기", on_click=인덱스별보기, key=key2)
 
+st.sidebar.button("코스피200보기", on_click=코스피200보기(st.session_state.선택일), key=key1)
+st.sidebar.button("인덱스별보기", on_click=인덱스별보기, key=key2)
 
     
 
