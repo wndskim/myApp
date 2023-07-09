@@ -118,23 +118,24 @@ if st.session_state.코스피200:
     # st.session_state.solutions = st.session_state.solutions[:int(option)]
     st.markdown("##")
     # _, col2, _ = st.columns([1, 1, 1])
-    m = st.markdown("""
-    <style>
-    #root > div:nth-child(1) > div > div > div > div > section > div > div:nth-child(1) > div:nth-child(6) > div > div[class^="css-1r6"] > div:nth-child(1) > div > div > button{ 
-        box-shadow: 4px 9px 18px -9px #276873;
-        background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
-        background-color:#599bb3;
-        border-radius:10px;
-        display:inline-block;
-        cursor:pointer;
-        color:#ffffff;
-        font-family:Arial;
-        font-size:28px;
-        font-weight:bold;
-        padding:15px 41px;
-        text-decoration:none;
-    }
-    </style>""", unsafe_allow_html=True)
+    
+    # m = st.markdown("""
+    # <style>
+    # #root > div:nth-child(1) > div > div > div > div > section > div > div:nth-child(1) > div:nth-child(6) > div > div[class^="css-1r6"] > div:nth-child(1) > div > div > button{ 
+    #     box-shadow: 4px 9px 18px -9px #276873;
+    #     background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+    #     background-color:#599bb3;
+    #     border-radius:10px;
+    #     display:inline-block;
+    #     cursor:pointer;
+    #     color:#ffffff;
+    #     font-family:Arial;
+    #     font-size:28px;
+    #     font-weight:bold;
+    #     padding:15px 41px;
+    #     text-decoration:none;
+    # }
+    # </style>""", unsafe_allow_html=True)
     st.sidebar.button("코스피200보기", on_click=코스피200보기, key=key1)
 else:
     st.sidebar.button("인덱스별보기", on_click=인덱스별보기, key=key2)
