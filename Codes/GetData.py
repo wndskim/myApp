@@ -15,8 +15,10 @@ def load_from_yfinance():
     df['SCHD_sma175']=ta.trend.sma_indicator(df.SCHD, window=175)
     df['SCHD_sma200']=ta.trend.sma_indicator(df.SCHD, window=200)
 
+    tickers[0]=df.tickers[0]
 
-    return df
+
+    return tickers[0]
 
 
 
