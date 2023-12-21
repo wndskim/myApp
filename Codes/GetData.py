@@ -35,7 +35,7 @@ def load_from_yfinance():
         st.dataframe(df_temp)
 
 
-        ticker['sma120']=ta.trend.sma_indicator(df_temp, window=120)
+        ticker['sma120']=ta.trend.sma_indicator(df_temp[tickers[i]], window=120)
 
         st.dataframe(ticker)
 
