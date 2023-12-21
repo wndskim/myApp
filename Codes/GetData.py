@@ -19,7 +19,7 @@ def load_from_yfinance():
 
     st.write(ticker)
 
-    ticker=df.ticker
+    ticker=df.SCHD
 
 
     return ticker
