@@ -3,6 +3,7 @@ from pykrx import stock
 import OpenDartReader
 import ta,os
 import pandas as pd
+import numpy as np
 import yfinance as yf
 
 def load_from_yfinance():
@@ -14,6 +15,10 @@ def load_from_yfinance():
         df['sma140']=ta.trend.sma_indicator(df.Close, window=140)
         df['sma175']=ta.trend.sma_indicator(df.Close, window=175)
         df['sma200']=ta.trend.sma_indicator(df.Close, window=200)
+
+
+        # 200일선 아래 있는가 확인
+        df['아래_200일선']=np.where(df.sma200 < df.Close, 1, 0)
 
         st.text(ticker)
         st.dataframe(df)
