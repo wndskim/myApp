@@ -10,6 +10,10 @@ def load_from_yfinance():
     tickers=['SCHD','TQQQ','TMF','PFIX']
     for i,ticker in enumerate(tickers):
         df=yf.download(ticker,start='2013-01-01',end='2023-12-20').Close
+
+        st.dataframe(df)
+
+        
         df['sma120']=ta.trend.sma_indicator(df.Close, window=120)
         df['sma140']=ta.trend.sma_indicator(df.Close, window=140)
         df['sma175']=ta.trend.sma_indicator(df.Close, window=175)
