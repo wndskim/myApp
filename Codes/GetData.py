@@ -16,6 +16,9 @@ def load_from_yfinance():
     df['SCHD_sma200']=ta.trend.sma_indicator(df.SCHD, window=200)
 
     ticker=tickers[0]
+
+    st.write(ticker)
+    
     ticker=df.ticker
 
 
