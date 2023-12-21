@@ -7,7 +7,8 @@ import yfinance as yf
 
 def load_from_yfinance():
 
-    df=yf('SCHD','TQQQ','TMF','PFIX').Close
+    tickers=['SCHD','TQQQ','TMF','PFIX']
+    df=yf(tickers,start='2013-01-01',end='2023-12-20').Close
 
 
     return df
