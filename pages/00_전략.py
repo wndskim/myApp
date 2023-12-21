@@ -42,4 +42,4 @@ def 전략보기():
     return
 
 chk00=st.checkbox('전략 보기')
-if chk00: 전략보기
+if chk00: 전략보기()
