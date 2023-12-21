@@ -24,6 +24,7 @@ def load_from_yfinance():
     df2=df.iloc[:,2]
     df3=df.iloc[:,3]
 
+    st.dataframe(df)
     st.dataframe(df0)
     st.dataframe(df1)
     st.dataframe(df2)
