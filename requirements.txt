@@ -12,3 +12,4 @@ fredapi
 python-dotenv
 opendartreader
 yfinance
+numpy
