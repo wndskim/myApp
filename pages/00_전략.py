@@ -1,5 +1,5 @@
 import streamlit as st
-from Codes import Display
+from Codes import Display,GetData
 
 # def 전략보기():
 #     st.write('심플강력 전략')
@@ -42,6 +42,10 @@ from Codes import Display
 #         그래서 4가지 조건을 두어 만족할 때 보유 수량의 50%씩 팔도록 했습니다')
 #     return
 
-chk00=st.checkbox('전략 보기')
+chk00=st.checkbox('전략 내용 보기')
+chk01=st.checkbox('전략 상태 확인')
 if chk00: Display.전략보기()
+
+df=GetData.load_from_yfinance()
+# if chk01: Display.전략상태확인()
 
