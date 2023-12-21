@@ -28,13 +28,19 @@ def load_from_yfinance():
     st.dataframe(df1)
     st.dataframe(df2)
     st.dataframe(df3)
-    # ticker['sma120']=ta.trend.sma_indicator(df.SCHD, window=120)
+
+    for i,ticker in enumerate(df.columns):
+        ticker['sma120']=ta.trend.sma_indicator(df.iloc[:,0], window=120)
+
+        st.dataframe(ticker)
+
+        
     # ticker['sma140']=ta.trend.sma_indicator(df.SCHD, window=140)
     # ticker['sma175']=ta.trend.sma_indicator(df.SCHD, window=175)
     # ticker['sma200']=ta.trend.sma_indicator(df.SCHD, window=200)
 
 
-    return df3
+    return ticker
 
 
 
