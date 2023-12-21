@@ -15,15 +15,14 @@ def load_from_yfinance():
     # df['SCHD_sma175']=ta.trend.sma_indicator(df.SCHD, window=175)
     # df['SCHD_sma200']=ta.trend.sma_indicator(df.SCHD, window=200)
 
-    # ticker=tickers[0]
-
-    # st.write(ticker)
 
     df0=df.iloc[:,0]
     df1=df.iloc[:,1]
     df2=df.iloc[:,2]
     df3=df.iloc[:,3]
 
+    ticker=tickers[0]
+    st.write(ticker)
     st.dataframe(df)
     st.dataframe(df0)
     st.dataframe(df1)
