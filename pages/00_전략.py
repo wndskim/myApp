@@ -41,5 +41,5 @@ def 전략보기():
         그래서 4가지 조건을 두어 만족할 때 보유 수량의 50%씩 팔도록 했습니다')
     return
 
-    chk00=st.checkbox('전략 보기')
-    if chk00: 전략보기()
+    chk000=st.checkbox('전략 보기')
+    if chk000: 전략보기()
