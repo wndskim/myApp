@@ -3,6 +3,17 @@ from pykrx import stock
 import OpenDartReader
 import ta,os
 import pandas as pd
+import yfinance as yf
+
+def load_from_yfinance():
+
+    df=yf('SCHD','TQQQ','TMF','PFIX').Close
+
+
+    return df
+
+
+
 
 def DART_재무정보(종목):
     API_KEY_DART=os.getenv("API_KEY_DART")
