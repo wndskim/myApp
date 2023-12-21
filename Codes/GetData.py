@@ -20,6 +20,11 @@ def load_from_yfinance():
         # 200일선 아래 있는가 확인
         df['아래_200일선']=np.where(df.sma200 > df.Close, 1, 0)
 
+        # 140일선 하락중인가 확인(전전날과 전날기준으로 확인)
+        df['전전140']=df.sma140.shift(-2)
+        df['전140']=df.sma140.shift(-1)
+        df['하락_104일선']
+
         st.text(ticker)
         st.dataframe(df)
 
