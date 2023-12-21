@@ -10,7 +10,7 @@ def load_from_yfinance():
     tickers=['SCHD','TQQQ','TMF','PFIX']
     df=yf.download(tickers,start='2013-01-01',end='2023-12-20').Close
 
-    df['SCHD_sma120']=ta.trend.sma_indicator(df.QQQ, window=120)
+    df['SCHD_sma120']=ta.trend.sma_indicator(df.SCHD, window=120)
     # data['sma5']=ta.trend.sma_indicator(data.종가, window=5)
 
 
