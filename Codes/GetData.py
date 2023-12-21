@@ -18,7 +18,7 @@ def load_from_yfinance():
 
 
         # 200일선 아래 있는가 확인
-        df['아래_200일선']=np.where(df.sma200 < df.Close, 1, 0)
+        df['아래_200일선']=np.where(df.sma200 > df.Close, 1, 0)
 
         st.text(ticker)
         st.dataframe(df)
