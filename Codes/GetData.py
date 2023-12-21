@@ -8,45 +8,17 @@ import yfinance as yf
 def load_from_yfinance():
 
     tickers=['SCHD','TQQQ','TMF','PFIX']
-    df=yf.download(tickers,start='2013-01-01',end='2023-12-20').Close
-
-    # df['SCHD_sma120']=ta.trend.sma_indicator(df.SCHD, window=120)
-    # df['SCHD_sma140']=ta.trend.sma_indicator(df.SCHD, window=140)
-    # df['SCHD_sma175']=ta.trend.sma_indicator(df.SCHD, window=175)
-    # df['SCHD_sma200']=ta.trend.sma_indicator(df.SCHD, window=200)
-
-
-    # df0=df.iloc[:,0]
-    # df1=df.iloc[:,1]
-    # df2=df.iloc[:,2]
-    # df3=df.iloc[:,3]
-
-    # st.write(tickers)
-    # st.dataframe(df)
-    # st.dataframe(df0)
-    # st.dataframe(df1)
-    # st.dataframe(df2)
-    # st.dataframe(df3)
-
-    tickers=df.columns
     for i,ticker in enumerate(df.columns):
-        df_temp=df.get(ticker)
+        df=yf.download(ticker,start='2013-01-01',end='2023-12-20').Close
+        df['sma120']=ta.trend.sma_indicator(df.Close, window=120)
+        df['sma140']=ta.trend.sma_indicator(df.Close, window=140)
+        df['sma175']=ta.trend.sma_indicator(df.Close, window=175)
+        df['sma200']=ta.trend.sma_indicator(df.Close, window=200)
 
-        # result = df.get(column_name)
-        st.dataframe(df_temp)
-
-
-        ticker['sma120']=ta.trend.sma_indicator(df_temp.ticker, window=120)
-
-        st.dataframe(ticker)
+        st.dataframe(df)
 
 
-    # ticker['sma140']=ta.trend.sma_indicator(df.SCHD, window=140)
-    # ticker['sma175']=ta.trend.sma_indicator(df.SCHD, window=175)
-    # ticker['sma200']=ta.trend.sma_indicator(df.SCHD, window=200)
-
-
-    return ticker
+    return df
 
 
 
