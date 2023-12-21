@@ -7,7 +7,15 @@ def main():
 
     st.header('My Stock Management System(MSMS)')
 
-    st.title('심플강력 전략')
+    st.write('심플강력 전략')
+    st.text('1. 투자ETFs')
+    st.text(' - TQQQ: 50%')
+    st.text(' - SCHD: 30%')
+    st.text(' - PFIX: 10%')
+    st.text(' - TMF: 10%')
+    
+
+
 
     chk00=st.sidebar.checkbox('시장 지표 보기')
     chk01=st.sidebar.checkbox('미연방은행(FRED) 주요지표 보기')
