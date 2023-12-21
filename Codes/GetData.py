@@ -30,8 +30,9 @@ def load_from_yfinance():
 
     tickers=df.columns
     for i,ticker in enumerate(df.columns):
-        df_temp=df.iloc[:,i]
+        df_temp=df.get(ticker)
 
+        # result = df.get(column_name)
         st.dataframe(df_temp)
 
 
