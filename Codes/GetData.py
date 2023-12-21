@@ -11,7 +11,9 @@ def load_from_yfinance():
     df=yf.download(tickers,start='2013-01-01',end='2023-12-20').Close
 
     df['SCHD_sma120']=ta.trend.sma_indicator(df.SCHD, window=120)
-    # data['sma5']=ta.trend.sma_indicator(data.종가, window=5)
+    df['SCHD_sma140']=ta.trend.sma_indicator(df.SCHD, window=140)
+    df['SCHD_sma175']=ta.trend.sma_indicator(df.SCHD, window=175)
+    df['SCHD_sma200']=ta.trend.sma_indicator(df.SCHD, window=200)
 
 
     return df
