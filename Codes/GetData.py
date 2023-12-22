@@ -23,7 +23,7 @@ def load_from_yfinance():
         # 140일선 하락중인가 확인(전전날과 전날기준으로 확인)
         df['전140']=df.sma140.shift(1)
         df['전전140']=df.sma140.shift(2)
-        # df['하락_104일선']
+        df['하락_104일선']=np.where(df.전140 < df.전전140, 1, 0)
 
         st.text(ticker)
         st.dataframe(df)
