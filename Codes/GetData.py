@@ -12,11 +12,12 @@ def load_from_yfinance():
     for i,ticker in enumerate(tickers):
         df=pd.DataFrame(yf.download(ticker,start='2013-01-01',end='2023-12-20'))
 
-        st.write(type(df))
         st.dataframe(df)
 
-        df.index=df.set_index('Date')
-        df['index']=df['index'].dt.strftime('%Y-%m-%d')
+        st.write(df.columns)
+
+        # df.index=df.set_index('Date')
+        # df['index']=df['index'].dt.strftime('%Y-%m-%d')
 
 
         df['sma120']=ta.trend.sma_indicator(df.Close, window=120)
