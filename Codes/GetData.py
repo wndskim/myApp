@@ -14,7 +14,7 @@ def load_from_yfinance():
 
         st.dataframe(df)
 
-        df['Date']=df['Date'].dt.strftime('%Y-%m-%d')
+        df['Index']=df['Index'].dt.strftime('%Y-%m-%d')
 
 
         df['sma120']=ta.trend.sma_indicator(df.Close, window=120)
