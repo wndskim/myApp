@@ -39,7 +39,7 @@ def load_from_yfinance():
         df.sort_values(by="Date",ascending=False,inplace=True)
 
         st.text(ticker)
-        st.dataframe(df.query('아래_120일선==1' and '아래_200일선==1' and '하락_140일선==1'))
+        st.dataframe(df.query(()'아래_120일선==1') and ('아래_200일선==1') and ()'하락_140일선==1')))
         # st.dataframe(df.query('아래_120일선==1' or '아래_200일선==1' or '하락_140일선==1'))
         st.dataframe(df)
 
