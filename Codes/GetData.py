@@ -20,13 +20,21 @@ def load_from_yfinance():
         df['sma200']=ta.trend.sma_indicator(df.Close, window=200)
 
 
-        # 200일선 아래 있는가 확인
+        # 200일선 아래 있는가 확인(매월첫거래일 확인)
         df['아래_200일선']=np.where(df.sma200 > df.Close, 1, 0)
 
-        # 140일선 하락중인가 확인(전전날과 전날기준으로 확인)
+        # 140일선 하락중인가 확인(전전날과 전날기준으로 확인,매월첫거래일 확인)
         df['전140']=df.sma140.shift(1)
         df['전전140']=df.sma140.shift(2)
-        df['하락_104일선']=np.where(df.전140 < df.전전140, 1, 0)
+        df['하락_140일선']=np.where(df.전140 < df.전전140, 1, 0)
+
+        # 전전일 종가가 120일선 위에 있었는데 전일 종가가 120일선 아래로 내려간 경우(매일확인)
+        df['전종가']=df.Close.shift(1)
+        df['전전종가']=df.Close.shift(2)
+        df['아래_120일선']=np.where(df.전전종가 > df.sma120 & df.전종가 < df.sma120, 1, 0)
+
+
+
 
         df.sort_values(by="Date",ascending=False,inplace=True)
 
