@@ -28,6 +28,8 @@ def load_from_yfinance():
         df['전전140']=df.sma140.shift(2)
         df['하락_104일선']=np.where(df.전140 < df.전전140, 1, 0)
 
+        df.sort_values(by="Date",ascending=False,inplace=True)
+
         st.text(ticker)
         st.dataframe(df)
 
