@@ -35,6 +35,9 @@ def load_from_yfinance():
         df['전전120']=df.sma120.shift(2)
         df['아래_120일선']=np.where((df.전전종가 > df.전전120) & (df.전종가 < df.전120), 1, 0)
 
+        df_temp=df.query(df.아래_120일선==1)
+
+        st.dataframe(df_temp)
 
 
 
