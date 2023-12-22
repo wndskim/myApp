@@ -12,6 +12,8 @@ def load_from_yfinance():
     for i,ticker in enumerate(tickers):
         df=yf.download(ticker,start='2013-01-01',end='2023-12-20')
 
+        st.dataframe(df)
+
         df['Date']=df['Date'].dt.strftime('%Y-%m-%d')
 
 
