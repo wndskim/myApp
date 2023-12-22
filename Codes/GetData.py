@@ -12,6 +12,7 @@ def load_from_yfinance():
     for i,ticker in enumerate(tickers):
         df=pd.DataFrame(yf.download(ticker,start='2013-01-01',end='2023-12-20'))
 
+        df.reset_index(inplace=True)
         st.dataframe(df)
 
         st.write(df.columns)
