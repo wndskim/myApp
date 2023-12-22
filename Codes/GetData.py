@@ -14,6 +14,7 @@ def load_from_yfinance():
 
         st.dataframe(df)
 
+        df.index=df.set_index('Date')
         df['index']=df['index'].dt.strftime('%Y-%m-%d')
 
 
