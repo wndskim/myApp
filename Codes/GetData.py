@@ -14,13 +14,6 @@ def load_from_yfinance():
 
         df.reset_index(inplace=True)
         df['Date']=df['Date'].dt.strftime('%Y-%m-%d')
-        st.dataframe(df)
-
-        st.write(df.columns)
-
-        # df.index=df.set_index('Date')
-
-
         df['sma120']=ta.trend.sma_indicator(df.Close, window=120)
         df['sma140']=ta.trend.sma_indicator(df.Close, window=140)
         df['sma175']=ta.trend.sma_indicator(df.Close, window=175)
