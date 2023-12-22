@@ -10,7 +10,7 @@ def load_from_yfinance():
 
     tickers=['SCHD','TQQQ','TMF','PFIX']
     for i,ticker in enumerate(tickers):
-        df=yf.download(ticker,start='2013-01-01',end='2023-12-20')
+        df=pd.DataFrame(yf.download(ticker,start='2013-01-01',end='2023-12-20'))
 
         st.dataframe(df)
 
