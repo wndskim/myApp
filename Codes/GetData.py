@@ -31,8 +31,8 @@ def load_from_yfinance():
         # 전전일 종가가 120일선 위에 있었는데 전일 종가가 120일선 아래로 내려간 경우(매일확인)
         df['전종가']=df.Close.shift(1)
         df['전전종가']=df.Close.shift(2)
-        df['전120']=df.Close.shift(1)
-        df['전전120']=df.Close.shift(2)
+        df['전120']=df.sma120.shift(1)
+        df['전전120']=df.sma120.shift(2)
         df['아래_120일선']=np.where((df.전전종가 > df.전전120) & (df.전종가 < df.전120), 1, 0)
 
 
